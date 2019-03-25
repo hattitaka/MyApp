@@ -1,20 +1,21 @@
-﻿
+﻿@model MyApp.Models.Portfolio.IndexViewModel
 @{
     ViewBag.Title = "PortfolioIndex";
 }
 
 <header class="main-visual">
-    <h1 class="main-visual-title">Welcome to my HP!!</h1>
-    <p class="main-visual-description">Sample Portfolio Site</p>
+    <h1 class="main-visual-title">@Model.Title</h1>
+    <p class="main-visual-description">@Model.Description</p>
+    @Html.ActionLink("Edit", "Edit")
 </header>
 <section class="contents">
     <h2><img src="/Content/img/about-header.gif" width="134" height="55" alt="about"></h2>
     <h3><img src="/Content/img/profile.gif" width="185" height="184" alt="profile"></h3>
     <p>
-        大学を卒業後に都内のシステム開発会社に就職し、PC向けのWebアプリケーションの構築やiPhone、Androidなどスマートフォン向けのネイティブアプリの開発などを担当しています。
+        @Model.Profile_1
     </p>
     <p>
-        趣味は写真を撮る事で休日に車で色々な所に行き写真を撮影しています。最近は撮った写真の加工やデザイン関係にも興味を持ちシステムのUIデザインなども勉強中です。
+        @Model.Profile_2
     </p>
 </section>
 <section class="contents">
