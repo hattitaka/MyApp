@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-size: 15px;
+}
+/* BASE */
+* {
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+}
+
+/* MAIN-VISUAL */
+.main-visual {
+  padding: 170px 0 170px 0;
+  background-color: midnightblue;
+  color: white;
+  text-align: center;
+}
+.main-visual-title {
+  font-size: 60px;
+}
+
+.main-visual-description {
+  font-size: 20px;
+}
+
+/* 共通CONTENTS */
+.contents {
+  margin: 70px auto 70px auto;
+  max-width: 980px;
+  text-align: center;
+}
+
+/* HOBBY */
+.hobby-container {
+  display: flex;
+  padding: 0;
+}
+.hobby-item {
+  padding: 0 20px 0 20px;
+  width: 33%;
+}
+.hobby-title {
+  margin-bottom: 1px;
+}
+.hobby-subtitle {
+  margin: 4px 0 7px;
+}
+
+/* GARELLY */
+.garelly-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+.garelly-item {
+  width: 33%;
+  padding: 3px 3px 0 3px;
+  list-style: none;
+
+  /* IE11対策 */
+  height: 0%;
+}
+.garelly-item img {
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* FOOTER */
+.footer {
+  padding: 7px 0 7px 0;
+  background-color: midnightblue;
+}
+.footer-copylight {
+  font-size: 13px;
+  text-align: center;
+  color: white;
+}
+
+/* 時間があればレスポンシブ対応 */
+@media (max-width: 768px) {
+  /* HOBBY */
+  .hobby-container {
+    flex-direction:column;
+  }
+  .hobby-item {
+    width: 100%;
+  }
+
+  /* GARELLY */
+  .garelly-container {
+    flex-direction:column;
+  }
+  .garelly-item {
+    width: 100%;
+    padding:0 20px 10px 20px;
+  }
+}

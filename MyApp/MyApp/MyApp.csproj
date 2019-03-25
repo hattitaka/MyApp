@@ -127,20 +127,36 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InMemoryInfrastructure\InMemoryPortfolioWordRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\about-header.gif" />
+    <Content Include="Content\img\develop-header.gif" />
+    <Content Include="Content\img\garelly-header.gif" />
+    <Content Include="Content\img\garelly01.jpg" />
+    <Content Include="Content\img\garelly02.jpg" />
+    <Content Include="Content\img\garelly03.jpg" />
+    <Content Include="Content\img\garelly04.jpg" />
+    <Content Include="Content\img\garelly05.jpg" />
+    <Content Include="Content\img\garelly06.jpg" />
+    <Content Include="Content\img\garelly07.jpg" />
+    <Content Include="Content\img\garelly08.jpg" />
+    <Content Include="Content\img\garelly09.jpg" />
+    <Content Include="Content\img\hobby-header.gif" />
+    <Content Include="Content\img\hobby01.gif" />
+    <Content Include="Content\img\hobby02.gif" />
+    <Content Include="Content\img\hobby03.gif" />
+    <Content Include="Content\img\main-visual-back.png" />
+    <Content Include="Content\img\profile.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -168,6 +184,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Portfolio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -178,10 +195,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
