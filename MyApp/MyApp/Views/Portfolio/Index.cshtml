@@ -1,12 +1,22 @@
 ﻿@model MyApp.Models.Portfolio.IndexViewModel
 @{
     ViewBag.Title = "PortfolioIndex";
+    Layout = null;
 }
+<!doctype html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - マイ ASP.NET アプリケーション</title>
+    <link href="@Url.Content("~/Content/portfolio/css/style.css")" rel="stylesheet">
+</head>
 
 <header class="main-visual">
     <h1 class="main-visual-title">@Model.Title</h1>
     <p class="main-visual-description">@Model.Description</p>
-    @Html.ActionLink("Edit", "Edit")
+    @Html.ActionLink("ADMIN", "Index", "Login", new { area = "Admin" }, null)
 </header>
 <section class="contents">
     <h2><img src="/Content/img/about-header.gif" width="134" height="55" alt="about"></h2>
