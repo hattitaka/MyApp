@@ -129,26 +129,39 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Common\TextId.cs" />
     <Compile Include="Areas\Admin\Common\LoginToken.cs" />
+    <Compile Include="Areas\Admin\Common\TextId.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Extentions\ErrorAttribute.cs" />
+    <Compile Include="Areas\Admin\Extentions\HttpCookieValueProvider.cs" />
+    <Compile Include="Areas\Admin\InMemoryInfrastructure\InMemoryPortfolioWordRepositories.cs" />
+    <Compile Include="Areas\Admin\InMemoryInfrastructure\InMemoryUserRepositories.cs" />
+    <Compile Include="Areas\Admin\Models\LoginRequestModel.cs" />
+    <Compile Include="Areas\Admin\Models\PreviewPageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PreviewPartialViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SaveChangeRequest.cs" />
+    <Compile Include="Areas\Admin\Models\EditPageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\User.cs" />
+    <Compile Include="Areas\Admin\Models\UserDetails.cs" />
+    <Compile Include="Areas\Admin\Models\UserDetailsPageViewModel.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\InMemoryInfrastructure\InMemoryPortfolioWordRepositories.cs" />
-    <Compile Include="Areas\Admin\InMemoryInfrastructure\InMemoryUserRepositories.cs" />
     <Compile Include="Models\AllText.cs" />
-    <Compile Include="Models\Portfolio\EditRequestModel.cs" />
-    <Compile Include="Models\Portfolio\EditViewModel.cs" />
     <Compile Include="Models\Portfolio\IndexViewModel.cs" />
     <Compile Include="Models\SiteText.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\css\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.css" />
@@ -177,7 +190,6 @@
     <Content Include="Content\img\main-visual-back.png" />
     <Content Include="Content\img\profile.gif" />
     <Content Include="Content\css\Site.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -204,11 +216,13 @@
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_PreviewPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Preview.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SideMenuLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\Error.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -240,7 +254,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Portfolio\Index.cshtml" />
-    <Content Include="Views\Portfolio\Edit.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -253,8 +266,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

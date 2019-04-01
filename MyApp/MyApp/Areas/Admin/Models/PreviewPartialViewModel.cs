@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyApp.Models.Portfolio
+namespace MyApp.Areas.Admin.Models
 {
-    public class EditViewModel
+    public class PreviewPartialViewModel
     {
-        public EditViewModel(string title, string description, string profile_1, string profile_2)
+        public PreviewPartialViewModel(string title, string description, string profile_1, string profile_2)
         {
             Title = title;
             Description = description;

@@ -1,7 +1,15 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model MyApp.Areas.Admin.Models.EditPageViewModel
 
-<h2>Index</h2>
+<h2>Admin Page</h2>
+<div class="col-lg-12">
+    <div class="col-lg-6 mx-auto">
+        <div class="list-group" id="myList" role="tablist">
+            @Html.ActionLink("Edit", "Edit", new { }, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Preview", "Preview", new { }, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Accounts", "UserDetails", "User", new { }, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Settings", "Settings", new { }, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Logout", "Logout", "Auth", new { }, new { @class = "list-group-item list-group-item-action" })
+        </div>
+    </div>
+</div>
 

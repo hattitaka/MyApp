@@ -1,0 +1,19 @@
+﻿@model MyApp.Areas.Admin.Models.User
+@{
+    ViewBag.Title = "LoginPage";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <h2>LoginPage</h2>
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+        {
+            <input type="text" name="Id">
+            <input type="text" name="Name">
+            <button type="submit">Login</button>
+        }
+    </div>
+    <div class="col-lg-3"></div>
+</div>

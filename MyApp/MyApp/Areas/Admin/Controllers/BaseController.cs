@@ -1,4 +1,4 @@
-﻿using MyApp.InMemoryInfrastructure;
+﻿using MyApp.Areas.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,18 +32,18 @@ namespace MyApp.Areas.Admin.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            string[] NO_CHECK_PATH = { "/Login/Index", "/Login/Login" };
+            string[] NO_CHECK_PATH = { "/", "/Admin/Auth/Login" };
 
             if (NO_CHECK_PATH.Contains(filterContext.HttpContext.Request.Path)) { return; }
 
             HttpCookie token = filterContext.HttpContext.Request.Cookies["token"];
-            if(token == null ||
+            if (token == null ||
                 filterContext.HttpContext.Request.Cookies["token"].Value != filterContext.HttpContext.Session["token"].ToString())
             {
                 // セッション値を初期化
                 filterContext.HttpContext.Session.RemoveAll();
-                
-                filterContext.Result = new RedirectResult("~/Login/Index");
+
+                filterContext.Result = new RedirectResult("~/Admin/Auth/Login");
                 return;
             }
 

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyApp.Models.Portfolio
+namespace MyApp.Areas.Admin.Models
 {
-    public class EditRequestModel
+    public class SaveChangeRequest
     {
+
         public string Title { get; set; }
 
         public string Description { get; set; }

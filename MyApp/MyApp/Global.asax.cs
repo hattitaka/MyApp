@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyApp.Areas.Admin.Extentions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,7 @@ namespace MyApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ValueProviderFactories.Factories.Add(new HttpCookieValueProviderFactory());
         }
     }
 }
