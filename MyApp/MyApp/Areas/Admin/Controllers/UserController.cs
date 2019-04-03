@@ -11,16 +11,16 @@ namespace MyApp.Areas.Admin.Controllers
     {
         InMemoryUserRepositories data = new InMemoryUserRepositories();
 
-        // GET: Admin/User
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult UserDetails()
         {
             var response = data.GetUserDetails("test");
             return View("UserDetails", new UserDetailsPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
+        }
+
+        public ActionResult Settings()
+        {
+            var response = data.GetUserDetails("test");
+            return View(new UserSettingPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
         }
     }
 }

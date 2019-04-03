@@ -1,17 +1,17 @@
 ﻿@model MyApp.Areas.Admin.Models.PreviewPartialViewModel
 @{
     ViewBag.Title = "PortfolioIndex";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section scripts {
+@*@section scripts {
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="@Url.Content("~/Content/portfolio/css/style.css")" rel="stylesheet">
     @Scripts.Render("~/bundles/modernizr")
-}
+}*@
 
 <header class="main-visual">
     <h1 class="main-visual-title">@Model.Title</h1>

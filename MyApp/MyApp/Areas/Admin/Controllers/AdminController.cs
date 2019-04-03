@@ -9,15 +9,10 @@ using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
 {
+    [HandleError]
     public class AdminController : BaseController
     {
         InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
-        
-        // GET: Admin/Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult Edit()
         {
@@ -26,12 +21,11 @@ namespace MyApp.Areas.Admin.Controllers
             return View(model);
         }
 
-        [Error]
         public ActionResult SaveChange(SaveChangeRequest request)
         {
             data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1, request.Profile_2));
             
-            return Redirect("Index");
+            return Redirect("Preview");
         }
 
         [HttpGet]

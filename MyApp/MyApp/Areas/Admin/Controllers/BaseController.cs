@@ -36,9 +36,9 @@ namespace MyApp.Areas.Admin.Controllers
 
             if (NO_CHECK_PATH.Contains(filterContext.HttpContext.Request.Path)) { return; }
 
-            HttpCookie token = filterContext.HttpContext.Request.Cookies["token"];
+            string token = ValueProvider.GetValue("token").AttemptedValue;
             if (token == null ||
-                filterContext.HttpContext.Request.Cookies["token"].Value != filterContext.HttpContext.Session["token"].ToString())
+                token != filterContext.HttpContext.Request.Cookies["token"].Value)
             {
                 // セッション値を初期化
                 filterContext.HttpContext.Session.RemoveAll();
