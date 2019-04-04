@@ -33,29 +33,30 @@ namespace MyApp.Areas.Admin
             { "user_4", "hidehide@gmo.jp" }
         };
 
-        public User GetUser(string id)
+        //public User GetUser(string id)
+        //{
+        //    if(nameData.TryGetValue(id, out var name) && mailAddressData.TryGetValue(id, out var address))
+        //    {
+        //        return new User(id, name, address);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        public bool CheckUser(string id, string address)
         {
-            if(nameData.TryGetValue(id, out var name))
-            {
-                return new User(id, name);
-            }
-            else
-            {
-                return null;
-            }
+            mailAddressData.TryGetValue(id, out var data);
+            return (address == data);
         }
 
-        public bool CheckUser(User user)
-        {
-            return nameData.TryGetValue(user.Id, out var name);
-        }
+        //public void RegisterUser(User user)
+        //{
+        //    nameData.Add(user.Id, user.Name);
+        //}
 
-        public void RegisterUser(User user)
-        {
-            nameData.Add(user.Id, user.Name);
-        }
-
-        public UserDetails GetUserDetails(string id)
+        public UserDetails GetUserDetails()
         {
             return new UserDetails("testId", "testLoginId", "testName", "testMailAddress");
         }

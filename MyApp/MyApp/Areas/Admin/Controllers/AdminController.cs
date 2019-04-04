@@ -14,32 +14,29 @@ namespace MyApp.Areas.Admin.Controllers
     {
         InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
 
+        //TextRepository data = new TextRepository();
+
+        [HttpGet]
         public ActionResult Edit()
         {
             var text = data.GetAll();
-            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2);
+            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1);
             return View(model);
         }
 
-        public ActionResult SaveChange(SaveChangeRequest request)
-        {
-            data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1, request.Profile_2));
-            
-            return Redirect("Preview");
-        }
+        //今日は使いません！
+        //[HttpGet]
+        //public ActionResult Preview()
+        //{
+        //    return View();
+        //}
 
-        [HttpGet]
-        public ActionResult Preview()
-        {
-            return View();
-        }
+        //[ChildActionOnly]
+        //public PartialViewResult GetPreviewPage()
+        //{
+        //    var text = data.GetAll();
 
-        [ChildActionOnly]
-        public PartialViewResult GetPreviewPage()
-        {
-            var text = data.GetAll();
-
-            return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
-        }
+        //    return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1));
+        //}
     }
 }

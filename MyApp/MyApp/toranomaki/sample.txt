@@ -1,0 +1,42 @@
+﻿1. 取得した文言をクライアントに送るロジック作成
+InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
+		
+[HttpGet]
+public ActionResult Index()
+{
+    var text = data.GetAll();
+
+    return View(new IndexViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
+}
+
+2.編集モード作成
+[HttpPost]
+public ActionResult SaveChange(SaveChangeRequest request)
+{
+    data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1));
+
+    return Redirect("/");
+}
+
+
+4.Userテーブル
+CREATE TABLE [dbo].[User]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NCHAR(50) NOT NULL, 
+    [Address] NCHAR(50) NOT NULL
+)
+
+4.Textテーブル
+CREATE TABLE [dbo].[Text]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [UserId] INT NOT NULL, 
+    [Title] NCHAR(100) NULL, 
+    [Description] NCHAR(200) NULL, 
+    [Profile_1] NCHAR(200) NULL
+)
+
+4.DB接続情報
+データソース：Microsoft SQL Sever (SqlClient)
+サーバー名：(localdb)\ProjectsV13

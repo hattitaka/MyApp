@@ -21,23 +21,18 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(LoginRequestModel user)
         {
-            bool isNullUser = userData.CheckUser(new User(user.Id, user.Name));
+            // 存在するユーザーかチェック
+            bool isNullUser = userData.CheckUser(user.Id, user.Address);
+
+            // 存在しなければログイン画面へ
             if (!isNullUser)
             {
-                return RedirectToAction("Index", "Auth");
+                return RedirectToAction("Login", "Auth");
             }
 
-            string token = LoginToken.GetToken();
-            HttpCookie tokenCookie = new HttpCookie("token", token)
-            {
-                Secure = Convert.ToBoolean(WebConfigurationManager.AppSettings["CookieSecure"]),
-                HttpOnly = true
-            };
-            Response.Cookies.Add(tokenCookie);
-
-            Session["token"] = token;
+            // 存在すればセッションに保存
             Session["userid"] = user.Id;
-            Session["username"] = user.Name;
+            Session["mailaddress"] = user.Address;
 
             return RedirectToAction("Edit", "Admin");
         }
@@ -46,7 +41,8 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             // Cookie削除
-            Response.Cookies["token"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["mailaddress"].Expires = DateTime.Now.AddDays(-1);
 
             Session.Abandon();
 

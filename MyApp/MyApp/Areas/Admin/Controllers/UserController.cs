@@ -11,15 +11,17 @@ namespace MyApp.Areas.Admin.Controllers
     {
         InMemoryUserRepositories data = new InMemoryUserRepositories();
 
+        //public UserRepository data = new UserRepository();
+
         public ActionResult UserDetails()
         {
-            var response = data.GetUserDetails("test");
+            var response = data.GetUserDetails();
             return View("UserDetails", new UserDetailsPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
         }
 
         public ActionResult Settings()
         {
-            var response = data.GetUserDetails("test");
+            var response = data.GetUserDetails();
             return View(new UserSettingPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
         }
     }
