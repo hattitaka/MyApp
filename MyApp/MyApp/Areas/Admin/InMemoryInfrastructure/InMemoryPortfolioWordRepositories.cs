@@ -30,7 +30,7 @@ namespace MyApp.Areas.Admin
 
         public AllText GetAll()
         {
-            return new AllText(data["title"], data["description"], data["profile_1"], data["profile_2"]);
+            return new AllText(data["title"], data["description"], data["profile_1"]);
         }
 
         public void Save(SiteText siteText)
@@ -43,7 +43,6 @@ namespace MyApp.Areas.Admin
             data["title"] = text.Title;
             data["description"] = text.Description;
             data["profile_1"] = text.Profile_1;
-            data["profile_2"] = text.Profile_2;
         }
     }
 }

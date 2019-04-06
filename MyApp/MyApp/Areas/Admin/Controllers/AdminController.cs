@@ -17,13 +17,13 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Edit()
         {
             var text = data.GetAll();
-            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2);
+            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1);
             return View(model);
         }
 
         public ActionResult SaveChange(SaveChangeRequest request)
         {
-            data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1, request.Profile_2));
+            data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1));
             
             return Redirect("Preview");
         }
@@ -39,7 +39,7 @@ namespace MyApp.Areas.Admin.Controllers
         {
             var text = data.GetAll();
 
-            return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
+            return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1));
         }
     }
 }

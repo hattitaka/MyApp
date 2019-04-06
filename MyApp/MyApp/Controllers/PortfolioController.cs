@@ -14,7 +14,7 @@ namespace MyApp.Controllers
         {
             var text = data.GetAll();
 
-            return View(new IndexViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
+            return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));
         }
     }
 }
