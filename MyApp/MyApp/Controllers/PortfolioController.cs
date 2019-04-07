@@ -16,10 +16,5 @@ namespace MyApp.Controllers
 
             return View(new IndexViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
         }
-
-        public ActionResult Test()
-        {
-            return View();
-        }
     }
 }
