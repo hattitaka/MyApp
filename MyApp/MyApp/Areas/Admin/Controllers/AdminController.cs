@@ -1,4 +1,5 @@
 ﻿using MyApp.Areas.Admin.Extentions;
+using MyApp.Areas.Admin.InMemoryInfrastructure.Models;
 using MyApp.Areas.Admin.Models;
 using MyApp.Models;
 using System;
@@ -12,19 +13,16 @@ namespace MyApp.Areas.Admin.Controllers
     [HandleError]
     public class AdminController : BaseController
     {
-        InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
-
         public ActionResult Edit()
         {
-            var text = data.GetAll();
+            var text = textData.GetText(userId);
             var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1);
             return View(model);
         }
 
         public ActionResult SaveChange(SaveChangeRequest request)
         {
-            data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1));
-            
+            textData.RegistText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
             return Redirect("Preview");
         }
 
@@ -37,7 +35,7 @@ namespace MyApp.Areas.Admin.Controllers
         [ChildActionOnly]
         public PartialViewResult GetPreviewPage()
         {
-            var text = data.GetAll();
+            var text = textData.GetText(userId);
 
             return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1));
         }

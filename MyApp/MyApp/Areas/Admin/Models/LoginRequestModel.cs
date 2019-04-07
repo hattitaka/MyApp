@@ -7,8 +7,8 @@ namespace MyApp.Areas.Admin.Models
 {
     public class LoginRequestModel
     {
-        public string Id { get; set; }
+        public string LoginId { get; set; }
 
-        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }

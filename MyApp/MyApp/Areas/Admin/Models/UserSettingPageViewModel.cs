@@ -8,15 +8,12 @@ namespace MyApp.Areas.Admin.Models
 {
     public class UserSettingPageViewModel
     {
-        public UserSettingPageViewModel(string id, string loginId, string name, string mailAddress)
+        public UserSettingPageViewModel(string loginId, string name, string mailAddress)
         {
-            Id = id;
             LoginId = loginId;
             Name = name;
             MailAddress = mailAddress;
         }
-
-        public string Id { get; }
 
         [DataType(DataType.Password)]
         public string LoginId { get; }

@@ -1,20 +1,28 @@
 ﻿using MyApp.Areas.Admin;
+using MyApp.Areas.Admin.Controllers;
 using MyApp.Models.Portfolio;
 using System.Web.Mvc;
 
 namespace MyApp.Controllers
 {
-    public class PortfolioController : Controller
+    public class PortfolioController : BaseController
     {
-        InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
-
         // GET: Portfolio
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string userId)
         {
-            var text = data.GetAll();
+            var text = textData.GetText(userId);
 
             return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));
+        }
+
+        public ActionResult GetPageList()
+        {
+            var response = new GetPageListViewModel()
+            {
+                UserIdList = userData.GetUserIdList().UserIdList,
+            };
+            return View(response);
         }
     }
 }

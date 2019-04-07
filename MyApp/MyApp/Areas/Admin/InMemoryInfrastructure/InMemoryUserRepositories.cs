@@ -1,4 +1,6 @@
-﻿using MyApp.Areas.Admin.Models;
+﻿using MyApp.Areas.Admin.Common;
+using MyApp.Areas.Admin.InMemoryInfrastructure.Models;
+using MyApp.Areas.Admin.Models;
 using MyApp.Models;
 using System;
 using System.Collections.Generic;
@@ -9,55 +11,45 @@ namespace MyApp.Areas.Admin
 {
     public class InMemoryUserRepositories
     {
-        private static Dictionary<string, string> nameData = new Dictionary<string, string>
+        private static List<UserDetails> testData = new List<UserDetails>
         {
-            { "user_1", "テスト太郎" },
-            { "user_2", "テストはな子" },
-            { "user_3", "織田信長" },
-            { "user_4", "豊臣秀吉"}
+            new UserDetails("asdfadsfasdf", "loginid_1", "name_1" , "mailaddress_1@test.com"),
+            new UserDetails("asdfasdf", "loginid_2", "name_2" , "mailaddress_2@test.com"),
+            new UserDetails("qweoijfa", "loginid_3", "name_3" , "mailaddress_3@test.com"),
+            new UserDetails("4a9g8jha", "loginid_4", "name_4" , "mailaddress_4@test.com"),
+            new UserDetails("agh489pahdag", "loginid_5", "name_5" , "mailaddress_5@test.com"),
         };
 
-        private static Dictionary<string, string> loginIdData = new Dictionary<string, string>
+        public CheckUserResponse CheckUser(CheckUserRequest req)
         {
-            { "user_1", "test-tarou" },
-            { "user_2", "test-hanako" },
-            { "user_3", "nobunobu" },
-            { "user_4", "hidehide" }
-        };
+            var target = testData.FirstOrDefault(x => x.LoginId==req.LoginId && x.MailAddress==req.Address);
 
-        private static Dictionary<string, string> mailAddressData = new Dictionary<string, string>
-        {
-            { "user_1", "test-tarou@gmo.jp" },
-            { "user_2", "test-hanako@gmo.jp" },
-            { "user_3", "nobunobu@gmo.jp" },
-            { "user_4", "hidehide@gmo.jp" }
-        };
-
-        public User GetUser(string id)
-        {
-            if(nameData.TryGetValue(id, out var name))
+            if(target == null)
             {
-                return new User(id, name);
+                return new CheckUserResponse();
             }
-            else
-            {
-                return null;
-            }
+
+            return new CheckUserResponse(target.Id, target.LoginId, target.Name, target.MailAddress);
         }
 
-        public bool CheckUser(User user)
+        public void RegisterUser(RegisterUserRequest req)
         {
-            return nameData.TryGetValue(user.Id, out var name);
+            string userId = UserIdFactory.GetUserId();
+
+            testData.Add(new UserDetails(userId, req.LoginId, req.Name, req.MailAddress));
         }
 
-        public void RegisterUser(User user)
+        public GetUserDetailsResponse GetUserDetails(string id)
         {
-            nameData.Add(user.Id, user.Name);
+            var res = testData.FirstOrDefault(x => x.Id == id);
+
+            return new GetUserDetailsResponse(res.Name, res.MailAddress, res.LoginId);
         }
 
-        public UserDetails GetUserDetails(string id)
+        public GetUserIdList GetUserIdList()
         {
-            return new UserDetails("testId", "testLoginId", "testName", "testMailAddress");
+            var res = testData.Select(x => x.Id).ToList();
+            return new GetUserIdList(res);
         }
     }
 }

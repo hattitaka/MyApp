@@ -9,18 +9,16 @@ namespace MyApp.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
-        InMemoryUserRepositories data = new InMemoryUserRepositories();
-
         public ActionResult UserDetails()
         {
-            var response = data.GetUserDetails("test");
-            return View("UserDetails", new UserDetailsPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
+            var response = userData.GetUserDetails(userId);
+            return View("UserDetails", new UserDetailsPageViewModel(response.LoginId, response.Name, response.Address));
         }
 
         public ActionResult Settings()
         {
-            var response = data.GetUserDetails("test");
-            return View(new UserSettingPageViewModel(response.Id, response.LoginId, response.Name, response.MailAddress));
+            var response = userData.GetUserDetails(userId);
+            return View(new UserSettingPageViewModel(response.LoginId, response.Name, response.Address));
         }
     }
 }

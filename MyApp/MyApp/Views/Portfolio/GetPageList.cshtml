@@ -1,0 +1,12 @@
+﻿@model MyApp.Models.Portfolio.GetPageListViewModel
+@{
+    ViewBag.Title = "GetPageList";
+}
+
+<h2>GetPageList</h2>
+
+@foreach (var id in Model.UserIdList)
+{
+    @Html.ActionLink(id, "Index", "Portfolio",  new { area = "", userId=id }, null)
+}
+

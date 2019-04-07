@@ -1,4 +1,4 @@
-﻿@model MyApp.Areas.Admin.Models.User
+﻿@model MyApp.Areas.Admin.Models.LoginRequestModel
 @{
     ViewBag.Title = "LoginPage";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -10,9 +10,19 @@
         <h2>LoginPage</h2>
         @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
         {
-            <input type="text" name="Id">
-            <input type="text" name="Name">
-            <button type="submit">Login</button>
+            <div class="form-group col-md-11 col-md-offset-1">
+                @Html.LabelFor(model => model.LoginId)
+                @Html.TextBoxFor(
+                    model => model.LoginId,
+                    new { @class="form-control" })
+            </div>
+            <div class="form-group col-md-11 col-md-offset-1">
+                @Html.LabelFor(model => model.Address)
+                @Html.TextBoxFor(
+                    model => model.Address,
+                    new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary col-md-offset-1">Login</button>
         }
     </div>
     <div class="col-lg-3"></div>

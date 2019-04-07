@@ -1,4 +1,5 @@
 ﻿using MyApp.Areas.Admin.Common;
+using MyApp.Areas.Admin.InMemoryInfrastructure.Models;
 using MyApp.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
@@ -19,25 +20,23 @@ namespace MyApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginRequestModel user)
+        public ActionResult Login(LoginRequestModel request)
         {
-            bool isNullUser = userData.CheckUser(new User(user.Id, user.Name));
-            if (!isNullUser)
+            var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Address));
+            if (String.IsNullOrEmpty(response.Id))
             {
-                return RedirectToAction("Index", "Auth");
+                return RedirectToAction("Login", "Auth");
             }
 
-            string token = LoginToken.GetToken();
-            HttpCookie tokenCookie = new HttpCookie("token", token)
-            {
-                Secure = Convert.ToBoolean(WebConfigurationManager.AppSettings["CookieSecure"]),
-                HttpOnly = true
-            };
-            Response.Cookies.Add(tokenCookie);
+            //string token = LoginToken.GetToken();
+            //HttpCookie tokenCookie = new HttpCookie("token", token)
+            //{
+            //    Secure = Convert.ToBoolean(WebConfigurationManager.AppSettings["CookieSecure"]),
+            //    HttpOnly = true
+            //};
+            //Response.Cookies.Add(tokenCookie);
 
-            Session["token"] = token;
-            Session["userid"] = user.Id;
-            Session["username"] = user.Name;
+            Session["userid"] = response.Id;
 
             return RedirectToAction("Edit", "Admin");
         }
@@ -46,8 +45,7 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             // Cookie削除
-            Response.Cookies["token"].Expires = DateTime.Now.AddDays(-1);
-
+            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
             Session.Abandon();
 
             return RedirectToAction("Index", "Portfolio", new { area = "" });
