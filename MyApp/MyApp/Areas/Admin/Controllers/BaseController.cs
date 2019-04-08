@@ -1,4 +1,5 @@
 ﻿using MyApp.Areas.Admin;
+using MyApp.Areas.Admin.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,13 @@ namespace MyApp.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        public InMemoryUserRepositories userData { get; }
+        //public InMemoryUserRepositories userData { get; }
 
-        public InMemoryPortfolioWordRepositories textData { get; }
+        //public InMemoryPortfolioWordRepositories textData { get; }
+
+        public UserRepository userData { get; }
+
+        public TextRepository textData { get; }
 
         public string userName { get; set; }
 
@@ -20,8 +25,13 @@ namespace MyApp.Areas.Admin.Controllers
 
         public BaseController()
         {
-            userData = new InMemoryUserRepositories();
-            textData = new InMemoryPortfolioWordRepositories();
+            // テスト用
+            //userData = new InMemoryUserRepositories();
+            //textData = new InMemoryPortfolioWordRepositories();
+
+            // DB接続用
+            userData = new UserRepository();
+            textData = new TextRepository();
         }
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)

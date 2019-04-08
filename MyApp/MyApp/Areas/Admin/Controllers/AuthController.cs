@@ -1,6 +1,7 @@
 ﻿using MyApp.Areas.Admin.Common;
-using MyApp.Areas.Admin.InMemoryInfrastructure.Models;
+using MyApp.Areas.Admin.Repository.Models;
 using MyApp.Areas.Admin.Models;
+using MyApp.Areas.Admin.Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

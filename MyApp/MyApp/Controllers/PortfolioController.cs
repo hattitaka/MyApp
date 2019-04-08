@@ -11,6 +11,11 @@ namespace MyApp.Controllers
         [HttpGet]
         public ActionResult Index(string userId)
         {
+            if (string.IsNullOrEmpty(userId))
+            {
+                return RedirectToAction("GetPageList");
+            }
+
             var text = textData.GetText(userId);
 
             return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));

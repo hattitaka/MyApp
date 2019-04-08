@@ -1,5 +1,5 @@
 ﻿using MyApp.Areas.Admin.Extentions;
-using MyApp.Areas.Admin.InMemoryInfrastructure.Models;
+using MyApp.Areas.Admin.Repository.Models;
 using MyApp.Areas.Admin.Models;
 using MyApp.Models;
 using System;
