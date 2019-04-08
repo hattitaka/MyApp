@@ -4,26 +4,29 @@
 }
 <h2>Edit</h2>
 <div class="row">
-    <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputTitle">Title</label>
-        @Html.TextBox(
-            "Title",
-            Model.Title,
-            new { @class="form-control", @id="inputTitle" })
-    </div>
-    <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputDescription">Description</label>
-        @Html.TextArea(
-            "Description",
-            Model.Description,
-            new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
-    </div>
-    <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputProfile_1">Profile_1</label>
-        @Html.TextArea(
-            "Profile_1",
-            Model.Profile_1,
-            new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
-    </div>
-    <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
+    @using (Html.BeginForm("SaveChange", "Admin", FormMethod.Post))
+    {
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputTitle">Title</label>
+            @Html.TextBox(
+                "Title",
+                Model.Title,
+                new { @class="form-control", @id="inputTitle" })
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputDescription">Description</label>
+            @Html.TextArea(
+                "Description",
+                Model.Description,
+                new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputProfile_1">Profile_1</label>
+            @Html.TextArea(
+                "Profile_1",
+                Model.Profile_1,
+                new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
+        </div>
+        <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
+    }
 </div>

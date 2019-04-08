@@ -5,9 +5,11 @@ using System.Web;
 
 namespace MyApp.Areas.Admin.Models
 {
-    public class LoginRequestModel
+    public class SaveUserChangeRequestModel
     {
         public string LoginId { get; set; }
+
+        public string Name { get; set; }
 
         public string Address { get; set; }
     }
