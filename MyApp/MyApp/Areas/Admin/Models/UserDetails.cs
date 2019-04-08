@@ -15,12 +15,12 @@ namespace MyApp.Areas.Admin.Models
             MailAddress = mailAddress;
         }
 
-        public string Id { get; }
+        public string Id { get; set; }
 
-        public string LoginId { get; }
+        public string LoginId { get; set; }
 
-        public string Name { get; }
+        public string Name { get; set; }
 
-        public string MailAddress { get; }
+        public string MailAddress { get; set; }
     }
 }

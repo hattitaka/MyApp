@@ -2,6 +2,9 @@
 using MyApp.Areas.Admin.Controllers;
 using MyApp.Models.Portfolio;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using static MyApp.Models.Portfolio.GetPageListViewModel;
 
 namespace MyApp.Controllers
 {
@@ -23,9 +26,13 @@ namespace MyApp.Controllers
 
         public ActionResult GetPageList()
         {
+            var userList = userData.GetUserList().UserList
+                .Select(x => new DisplayUserItem(x.Id, x.Name))
+                .ToList();
+
             var response = new GetPageListViewModel()
             {
-                UserIdList = userData.GetUserIdList().UserIdList,
+                UserList = userList
             };
             return View(response);
         }

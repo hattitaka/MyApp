@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using static MyApp.Areas.Admin.Repository.Models.GetUserListResponse;
 
 namespace MyApp.Areas.Admin.Repository
 {
@@ -61,10 +62,12 @@ namespace MyApp.Areas.Admin.Repository
             return new GetUserDetailsResponse(res.Name, res.MailAddress, res.LoginId);
         }
 
-        public GetUserIdList GetUserIdList()
+        public GetUserListResponse GetUserIdList()
         {
-            var res = db.User.Select(x => x.Id).ToList();
-            return new GetUserIdList(res);
+            var res = db.User
+                .Select(x => new UserItem(x.Id, x.Name))
+                .ToList();
+            return new GetUserListResponse(res);
         }
     }
 }

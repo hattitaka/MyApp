@@ -5,13 +5,26 @@ using System.Web;
 
 namespace MyApp.Areas.Admin.Repository.Models
 {
-    public class GetUserIdList
+    public class GetUserListResponse
     {
-        public GetUserIdList(List<string> userIdList)
+        public GetUserListResponse(List<UserItem> userList)
         {
-            UserIdList = userIdList;
+            UserList = userList;
         }
 
-        public List<string> UserIdList { get; }
+        public List<UserItem> UserList { get; }
+
+        public class UserItem
+        {
+            public UserItem(string id, string name)
+            {
+                Id = id;
+                Name = name;
+            }
+
+            public string Id { get; }
+
+            public string Name { get; }
+        }
     }
 }

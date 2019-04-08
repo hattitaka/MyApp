@@ -1,12 +1,12 @@
 ﻿using MyApp.Areas.Admin.Common;
 using MyApp.Areas.Admin.Repository.Models;
 using MyApp.Areas.Admin.Models;
-using MyApp.Areas.Admin.Repository.Models;
 using MyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using static MyApp.Areas.Admin.Repository.Models.GetUserListResponse;
 
 namespace MyApp.Areas.Admin
 {
@@ -33,6 +33,20 @@ namespace MyApp.Areas.Admin
             return new CheckUserResponse(target.Id, target.LoginId, target.Name, target.MailAddress);
         }
 
+        internal void SaveChange(SaveUserChangeRequest req)
+        {
+            var target = testData.FirstOrDefault(x => x.Id == req.Id);
+
+            if (target == null)
+            {
+                throw new Exception("Target User Not Found");
+            }
+
+            target.LoginId = req.LoginId;
+            target.Name = req.Name;
+            target.MailAddress = req.Address;
+        }
+
         public void RegisterUser(RegisterUserRequest req)
         {
             string userId = UserIdFactory.GetUserId();
@@ -47,10 +61,10 @@ namespace MyApp.Areas.Admin
             return new GetUserDetailsResponse(res.Name, res.MailAddress, res.LoginId);
         }
 
-        public GetUserIdList GetUserIdList()
+        public GetUserListResponse GetUserList()
         {
-            var res = testData.Select(x => x.Id).ToList();
-            return new GetUserIdList(res);
+            var res = testData.Select(x => new UserItem(x.Id, x.Name)).ToList();
+            return new GetUserListResponse(res);
         }
     }
 }
