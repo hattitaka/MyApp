@@ -165,8 +165,6 @@
     <Compile Include="Areas\Admin\Models\UserDetailsPageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UserSettingPageViewModel.cs" />
     <Compile Include="Areas\Admin\Repository\Models\SaveUserChangeRequest.cs" />
-    <Compile Include="Areas\Admin\Repository\TextRepository.cs" />
-    <Compile Include="Areas\Admin\Repository\UserRepository.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
