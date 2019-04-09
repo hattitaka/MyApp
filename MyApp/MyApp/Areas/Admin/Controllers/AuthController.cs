@@ -29,14 +29,6 @@ namespace MyApp.Areas.Admin.Controllers
                 return RedirectToAction("Login", "Auth");
             }
 
-            //string token = LoginToken.GetToken();
-            //HttpCookie tokenCookie = new HttpCookie("token", token)
-            //{
-            //    Secure = Convert.ToBoolean(WebConfigurationManager.AppSettings["CookieSecure"]),
-            //    HttpOnly = true
-            //};
-            //Response.Cookies.Add(tokenCookie);
-
             Session["userid"] = response.Id;
 
             return RedirectToAction("Edit", "Admin");

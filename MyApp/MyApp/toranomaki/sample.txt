@@ -1,22 +1,58 @@
 ﻿1. 取得した文言をクライアントに送るロジック作成
-InMemoryPortfolioWordRepositories data = new InMemoryPortfolioWordRepositories();
-		
 [HttpGet]
 public ActionResult Index()
 {
-    var text = data.GetAll();
+    return View();
+}
 
-    return View(new IndexViewModel(text.Title, text.Description, text.Profile_1, text.Profile_2));
+// GET: Portfolio
+[HttpGet]
+public ActionResult Index(string userId)
+{
+    if (string.IsNullOrEmpty(userId))
+    {
+        return RedirectToAction("GetPageList");
+    }
+
+    var text = textData.GetText(userId);
+
+    return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));
 }
 
 2.編集モード作成
-[HttpPost]
 public ActionResult SaveChange(SaveChangeRequest request)
 {
-    data.SaveAll(new AllText(request.Title, request.Description, request.Profile_1));
-
-    return Redirect("/");
+    textData.RegistText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
+    return Redirect("Preview");
 }
+
+<div class="row">
+    @using (Html.BeginForm("SaveChange", "Admin", FormMethod.Post))
+    {
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputTitle">Title</label>
+            @Html.TextBox(
+                "Title",
+                Model.Title,
+                new { @class="form-control", @id="inputTitle" })
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputDescription">Description</label>
+            @Html.TextArea(
+                "Description",
+                Model.Description,
+                new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputProfile_1">Profile_1</label>
+            @Html.TextArea(
+                "Profile_1",
+                Model.Profile_1,
+                new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
+        </div>
+        <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
+    }
+</div>
 
 
 4.Userテーブル
