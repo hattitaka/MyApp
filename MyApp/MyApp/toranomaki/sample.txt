@@ -56,22 +56,23 @@ public ActionResult SaveChange(SaveChangeRequest request)
 
 
 4.Userテーブル
-CREATE TABLE [dbo].[User]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [Name] NCHAR(50) NOT NULL, 
-    [Address] NCHAR(50) NOT NULL
-)
+CREATE TABLE [dbo].[User] (
+    [Id]          NCHAR (32)  NOT NULL,
+    [LoginId]     NCHAR (50)  NOT NULL,
+    [Name]        NCHAR (50)  NOT NULL,
+    [MailAddress] NCHAR (256) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
 
 4.Textテーブル
-CREATE TABLE [dbo].[Text]
-(
-    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [UserId] INT NOT NULL, 
-    [Title] NCHAR(100) NULL, 
-    [Description] NCHAR(200) NULL, 
-    [Profile_1] NCHAR(200) NULL
-)
+CREATE TABLE [dbo].[Text] (
+    [Id]          NCHAR (32)  NOT NULL,
+    [UserId]      NCHAR (32)  NOT NULL,
+    [Title]       NCHAR (50)  NOT NULL,
+    [Description] NCHAR (200) NOT NULL,
+    [Profile_1]   NCHAR (200) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
 
 4.DB接続情報
 データソース：Microsoft SQL Sever (SqlClient)
