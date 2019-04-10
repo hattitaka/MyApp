@@ -8,10 +8,9 @@ namespace MyApp.Areas.Admin.Repository.Models
 {
     public class CheckUserResponse
     {
-        public CheckUserResponse(string id, string loginId, string name, string mailAddress)
+        public CheckUserResponse(string id, string name, string mailAddress)
         {
             Id = id;
-            LoginId = loginId;
             Name = name;
             MailAddress = mailAddress;
         }
@@ -19,8 +18,6 @@ namespace MyApp.Areas.Admin.Repository.Models
         public CheckUserResponse() { }
 
         public string Id { get; }
-
-        public string LoginId { get; }
 
         public string Name { get; }
 

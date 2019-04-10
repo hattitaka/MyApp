@@ -22,7 +22,7 @@ namespace MyApp.Areas.Admin.Controllers
 
         public ActionResult SaveChange(SaveChangeRequest request)
         {
-            textData.RegistText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
+            textData.SaveText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
             return Redirect("Preview");
         }
 

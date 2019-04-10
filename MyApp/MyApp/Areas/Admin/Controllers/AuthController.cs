@@ -1,12 +1,6 @@
-﻿using MyApp.Areas.Admin.Common;
-using MyApp.Areas.Admin.Repository.Models;
-using MyApp.Areas.Admin.Models;
+﻿using MyApp.Areas.Admin.Models;
 using MyApp.Areas.Admin.Repository.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
@@ -23,19 +17,14 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(LoginRequestModel request)
         {
-            var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Address));
-            if (String.IsNullOrEmpty(response.Id))
+            // ユーザーの存在チェック
+            var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Password));
+
+            // 存在しなければログイン画面に戻す
+            if (response == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
-
-            //string token = LoginToken.GetToken();
-            //HttpCookie tokenCookie = new HttpCookie("token", token)
-            //{
-            //    Secure = Convert.ToBoolean(WebConfigurationManager.AppSettings["CookieSecure"]),
-            //    HttpOnly = true
-            //};
-            //Response.Cookies.Add(tokenCookie);
 
             Session["userid"] = response.Id;
 
@@ -45,8 +34,7 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
-            // Cookie削除
-            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+            // Session削除
             Session.Abandon();
 
             return RedirectToAction("Index", "Portfolio", new { area = "" });

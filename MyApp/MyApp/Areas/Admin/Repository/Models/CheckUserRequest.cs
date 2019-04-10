@@ -8,14 +8,14 @@ namespace MyApp.Areas.Admin.Repository.Models
 {
     public class CheckUserRequest
     {
-        public CheckUserRequest(string loginId, string address)
+        public CheckUserRequest(string loginId, string password)
         {
             LoginId = loginId;
-            Address = address;
+            Password = password;
         }
 
         public string LoginId { get; }
 
-        public string Address { get; }
+        public string Password { get; }
     }
 }
