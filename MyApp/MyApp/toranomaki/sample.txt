@@ -5,11 +5,16 @@ public ActionResult Index()
     return View();
 }
 
+public ActionResult
+
+
+1. 取得した文言を画面に送るロジック
 // GET: Portfolio
 [HttpGet]
 public ActionResult Index(string userId)
 {
-    if (string.IsNullOrEmpty(userId))
+    // useridの空白とNullのチェック
+	if (string.IsNullOrEmpty(userId))
     {
         return RedirectToAction("GetPageList");
     }
@@ -55,7 +60,7 @@ public ActionResult SaveChange(SaveChangeRequest request)
 </div>
 
 
-4.Userテーブル
+4.1 Userテーブル
 CREATE TABLE [dbo].[User] (
     [Id]          NCHAR (32)  NOT NULL,
     [LoginId]     NCHAR (50)  NOT NULL,
@@ -64,7 +69,7 @@ CREATE TABLE [dbo].[User] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-4.Textテーブル
+4.2 Textテーブル
 CREATE TABLE [dbo].[Text] (
     [Id]          NCHAR (32)  NOT NULL,
     [UserId]      NCHAR (32)  NOT NULL,
@@ -77,3 +82,19 @@ CREATE TABLE [dbo].[Text] (
 4.DB接続情報
 データソース：Microsoft SQL Sever (SqlClient)
 サーバー名：(localdb)\ProjectsV13
+
+5.
+public GetTextResponse GetText(string userId)
+{
+    // 渡されたuerIdをもとにTextテーブル内を検索する
+    var res = db.Text.FirstOrDefault(x => x.UserId == userId);
+
+    // 検索結果がNullなら空レスポンス
+    if (res == null)
+    {
+        return new GetTextResponse();
+    }
+
+    // 検索結果が存在すれば取得したデータを返す
+    return new GetTextResponse(res.Title, res.Description, res.Profile_1);
+}

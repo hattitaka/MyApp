@@ -1,9 +1,6 @@
-﻿using MyApp.Areas.Admin;
-using MyApp.Areas.Admin.Repository;
+﻿using MyApp.Areas.Admin.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -13,13 +10,11 @@ namespace MyApp.Areas.Admin.Controllers
     {
         // テスト用
         public InMemoryUserRepositories userData { get; }
-
         public InMemoryPortfolioWordRepositories textData { get; }
 
         // DB接続用
-        //public UserRepository userData { get; }
-
-        //public TextRepository textData { get; }
+        // public UserRepository userData { get; }
+        // public TextRepository textData { get; }
 
         public string userName { get; set; }
 
@@ -32,8 +27,8 @@ namespace MyApp.Areas.Admin.Controllers
             textData = new InMemoryPortfolioWordRepositories();
 
             // DB接続用
-            //userData = new UserRepository();
-            //textData = new TextRepository();
+            // userData = new UserRepository();
+            // textData = new TextRepository();
         }
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)

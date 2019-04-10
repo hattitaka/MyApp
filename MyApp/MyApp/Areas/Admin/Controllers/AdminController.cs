@@ -20,12 +20,6 @@ namespace MyApp.Areas.Admin.Controllers
             return View(model);
         }
 
-        public ActionResult SaveChange(SaveChangeRequest request)
-        {
-            textData.RegistText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
-            return Redirect("Preview");
-        }
-
         [HttpGet]
         public ActionResult Preview()
         {

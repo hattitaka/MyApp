@@ -1,12 +1,6 @@
-﻿using MyApp.Areas.Admin.Common;
-using MyApp.Areas.Admin.Repository.Models;
-using MyApp.Areas.Admin.Models;
+﻿using MyApp.Areas.Admin.Models;
 using MyApp.Areas.Admin.Repository.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
@@ -23,8 +17,11 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(LoginRequestModel request)
         {
+            // ユーザーをチェック
             var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Address));
-            if (String.IsNullOrEmpty(response.Id))
+
+
+            if (string.IsNullOrEmpty(response.Id))
             {
                 return RedirectToAction("Login", "Auth");
             }

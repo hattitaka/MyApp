@@ -10,7 +10,7 @@ namespace MyApp.Areas.Admin.Repository
 {
     public class UserRepository
     {
-        private MyAppDBEntities1 db = new MyAppDBEntities1();
+        private MyAppDBEntities db = new MyAppDBEntities();
 
         public CheckUserResponse CheckUser(CheckUserRequest req)
         {
@@ -62,7 +62,7 @@ namespace MyApp.Areas.Admin.Repository
             return new GetUserDetailsResponse(res.Name, res.MailAddress, res.LoginId);
         }
 
-        public GetUserListResponse GetUserIdList()
+        public GetUserListResponse GetUserList()
         {
             var res = db.User
                 .Select(x => new UserItem(x.Id, x.Name))

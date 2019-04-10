@@ -10,19 +10,7 @@ namespace MyApp.Areas.Admin.Repository
 {
     public class TextRepository
     {
-        MyAppDBEntities1 db = new MyAppDBEntities1();
-
-        public GetTextResponse GetText(string userId)
-        {
-            var res = db.Text.FirstOrDefault(x => x.UserId == userId);
-
-            if (res == null)
-            {
-                return new GetTextResponse();
-            }
-
-            return new GetTextResponse(res.Title, res.Description, res.Profile_1);
-        }
+        MyAppDBEntities db = new MyAppDBEntities();
 
         public void RegistText(RegisterTextRequest req)
         {
