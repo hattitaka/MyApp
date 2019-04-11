@@ -209,6 +209,7 @@
     <Content Include="Content\img\main-visual-back.png" />
     <Content Include="Content\img\profile.gif" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="DB\MyAppDb.mdf" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
