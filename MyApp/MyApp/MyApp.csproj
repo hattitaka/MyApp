@@ -230,6 +230,7 @@
     <Content Include="Content\img\main-visual-back.png" />
     <Content Include="Content\img\profile.gif" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="DB\MyAppDB.mdf" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Model1.Context.tt">
@@ -324,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DB\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
