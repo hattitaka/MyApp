@@ -5,7 +5,7 @@ namespace MyApp.Areas.Admin.Repository
 {
     public class TextRepository
     {
-        MyAppDBEntities db = new MyAppDBEntities();
+        MyAppDbEntities db = new MyAppDbEntities();
 
         public void SaveText(RegisterTextRequest req)
         {

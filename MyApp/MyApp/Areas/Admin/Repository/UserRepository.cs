@@ -10,7 +10,7 @@ namespace MyApp.Areas.Admin.Repository
 {
     public class UserRepository: IUserRepository
     {
-        private MyAppDBEntities db = new MyAppDBEntities();
+        private MyAppDbEntities db = new MyAppDbEntities();
 
         public CheckUserResponse CheckUser(CheckUserRequest req)
         {
