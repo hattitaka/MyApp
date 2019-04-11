@@ -17,11 +17,11 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(LoginRequestModel request)
         {
-            // ユーザーをチェック
-            var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Address));
+            // ユーザーの存在チェック
+            var response = userData.CheckUser(new CheckUserRequest(request.LoginId, request.Password));
 
-
-            if (string.IsNullOrEmpty(response.Id))
+            // 存在しなければログイン画面に戻す
+            if (response == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
@@ -34,8 +34,7 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
-            // Cookie削除
-            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+            // Session削除
             Session.Abandon();
 
             return RedirectToAction("Index", "Portfolio", new { area = "" });

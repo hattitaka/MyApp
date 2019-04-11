@@ -7,11 +7,12 @@ namespace MyApp.Areas.Admin.Repository.Models
 {
     public class RegisterUserRequest
     {
-        public RegisterUserRequest(string loginId, string name, string mailAddress)
+        public RegisterUserRequest(string loginId, string name, string mailAddress, string password)
         {
             LoginId = loginId;
             Name = name;
             MailAddress = mailAddress;
+            Password = password;
         }
 
         public string LoginId { get; }
@@ -19,5 +20,7 @@ namespace MyApp.Areas.Admin.Repository.Models
         public string Name { get; }
 
         public string MailAddress { get; }
+
+        public string Password { get; }
     }
 }

@@ -9,6 +9,6 @@ namespace MyApp.Areas.Admin.Models
     {
         public string LoginId { get; set; }
 
-        public string Address { get; set; }
+        public string Password { get; set; }
     }
 }

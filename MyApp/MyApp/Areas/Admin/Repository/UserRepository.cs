@@ -8,20 +8,20 @@ using static MyApp.Areas.Admin.Repository.Models.GetUserListResponse;
 
 namespace MyApp.Areas.Admin.Repository
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         private MyAppDBEntities db = new MyAppDBEntities();
 
         public CheckUserResponse CheckUser(CheckUserRequest req)
         {
-            var target = db.User.FirstOrDefault(x => x.LoginId == req.LoginId && x.MailAddress == req.Address);
+            var target = db.User.FirstOrDefault(x => x.LoginId == req.LoginId && x.Password == req.Password);
 
             if (target == null)
             {
-                return new CheckUserResponse();
+                return null;
             }
 
-            return new CheckUserResponse(target.Id, target.LoginId, target.Name, target.MailAddress);
+            return new CheckUserResponse(target.Id, target.Name, target.MailAddress);
         }
 
         public void RegisterUser(RegisterUserRequest req)

@@ -30,7 +30,7 @@ namespace MyApp.Areas.Admin
             return new GetTextResponse(res.Title, res.Description, res.Profile_1);
         }
 
-        public void RegistText(RegisterTextRequest req)
+        public void SaveText(RegisterTextRequest req)
         {
             var target = testData.FirstOrDefault(x => x.UserId==req.UserId);
             target.Title = req.Title;
