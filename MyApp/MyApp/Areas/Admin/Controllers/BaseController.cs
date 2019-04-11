@@ -33,17 +33,22 @@ namespace MyApp.Areas.Admin.Controllers
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
-            userName = requestContext.HttpContext.Session["username"]?.ToString();
-
             userId = requestContext.HttpContext.Session["userid"]?.ToString();
 
             return base.BeginExecute(requestContext, callback, state);
         }
 
+        /// <summary>
+        /// アクションが呼び出される前に実行される
+        /// セッションに値が存在しなければログインしていないユーザーと判断し
+        /// ログイン画面へ飛ばす
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            // アクセスがNO_CHECK_PATHに含まれるものだった時はログインチェックをしない
+            // 例：ログイン画面へ来た場合はログインチェックは必要ない
             string[] NO_CHECK_PATH = { "/", "/Admin/Auth/Login", "/Portfolio/GetPageList" };
-
             if (NO_CHECK_PATH.Contains(filterContext.HttpContext.Request.Path)) { return; }
 
             if (Session["userid"] == null)
@@ -51,6 +56,7 @@ namespace MyApp.Areas.Admin.Controllers
                 // セッション値を初期化
                 filterContext.HttpContext.Session.RemoveAll();
 
+                // ログイン画面へ飛ばす
                 filterContext.Result = new RedirectResult("~/Admin/Auth/Login");
                 return;
             }

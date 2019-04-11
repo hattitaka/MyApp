@@ -1,64 +1,86 @@
-﻿1. 取得した文言をクライアントに送るロジック作成
+﻿HelloWorldしてみる
+
+/// <summary>
+/// ブラウザが「～～/Portfolio/Index」にアクセスしたときに呼び出される
+/// </summary>
+/// <returns>Views/Portfolio/Index.cshtmlをブラウザに返す</returns>
 [HttpGet]
 public ActionResult Index()
 {
-    return View();
+    // Views/Portfolio/Index.cshtmlをブラウザに返す処理
+	return View();
 }
-
-public ActionResult
 
 
 1. 取得した文言を画面に送るロジック
-// GET: Portfolio
 [HttpGet]
-public ActionResult Index(string userId)
+public ActionResult Index()
 {
-    // useridの空白とNullのチェック
-	if (string.IsNullOrEmpty(userId))
-    {
-        return RedirectToAction("GetPageList");
-    }
+    var title = "タイトル";
+    var description = "サブタイトル";
+    var profile = "自己紹介";
 
-    var text = textData.GetText(userId);
+    // 画面で受け取るデータのクラス
+    var response = new IndexViewModel(title, description, profile);
 
-    return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));
+    // Views/Portfolio/Index.cshtmlをブラウザに返す
+    return View(response);
 }
 
-2.編集モード作成
+
+2.1 編集内容の保存アクションを作成する
+/// <summary>
+/// ブラウザが「～～/Admin/SaveChange」にアクセスしたときに呼び出される
+/// </summary>
+/// <param name="request">SaveChangeRequestクラスのデータを受け付けている</param>
+/// <returns></returns>
+[HttpPost]
 public ActionResult SaveChange(SaveChangeRequest request)
 {
-    textData.RegistText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
+    // どこで作られるかは秘密
+    var id = userId;
+
+    // 画面からきたリクエストたちをtitle, description, profile_1に
+    var title = request.Title;
+    var description = request.Description;
+    var profile_1 = request.Profile_1;
+
+    // 保存メソッドに渡すためのリクエストクラスを作る
+    var saveData = new RegisterTextRequest(id, title, description, profile_1);
+
+    // saveDataを保存メソッドに渡す
+    textData.SaveText(saveData);
+
+    // プレビューアクションを呼び出す
     return Redirect("Preview");
 }
 
-<div class="row">
-    @using (Html.BeginForm("SaveChange", "Admin", FormMethod.Post))
-    {
-        <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputTitle">Title</label>
-            @Html.TextBox(
-                "Title",
-                Model.Title,
-                new { @class="form-control", @id="inputTitle" })
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputDescription">Description</label>
-            @Html.TextArea(
-                "Description",
-                Model.Description,
-                new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputProfile_1">Profile_1</label>
-            @Html.TextArea(
-                "Profile_1",
-                Model.Profile_1,
-                new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
-        </div>
-        <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
-    }
-</div>
-
+2.2 保存アクションに値を送るしくみ作成
+@using (Html.BeginForm("SaveChange", "Admin", FormMethod.Post))
+{
+    <div class="form-group col-md-11 col-md-offset-1">
+        <label for="inputTitle">Title</label>
+        @Html.TextBox(
+            "Title",
+            Model.Title,
+            new { @class="form-control", @id="inputTitle" })
+    </div>
+    <div class="form-group col-md-11 col-md-offset-1">
+        <label for="inputDescription">Description</label>
+        @Html.TextArea(
+            "Description",
+            Model.Description,
+            new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
+    </div>
+    <div class="form-group col-md-11 col-md-offset-1">
+        <label for="inputProfile_1">Profile_1</label>
+        @Html.TextArea(
+            "Profile_1",
+            Model.Profile_1,
+            new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
+    </div>
+    <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
+}
 
 4.1 Userテーブル
 CREATE TABLE [dbo].[User] (
@@ -83,7 +105,7 @@ CREATE TABLE [dbo].[Text] (
 データソース：Microsoft SQL Sever (SqlClient)
 サーバー名：(localdb)\ProjectsV13
 
-5.
+5.2 DBからデータを取得する処理
 public GetTextResponse GetText(string userId)
 {
     // 渡されたuerIdをもとにTextテーブル内を検索する
@@ -97,4 +119,25 @@ public GetTextResponse GetText(string userId)
 
     // 検索結果が存在すれば取得したデータを返す
     return new GetTextResponse(res.Title, res.Description, res.Profile_1);
+}
+
+5.3 GetTextメソッドを用いたIndexアクション
+// GET: Portfolio
+[HttpGet]
+public ActionResult Index(string userId)
+{
+    // useridの空白とNullのチェック
+    if (string.IsNullOrEmpty(userId))
+    {
+        return RedirectToAction("GetPageList");
+    }
+
+    // DBからデータを取得
+    var text = textData.GetText(userId);
+
+    // 画面で受け取るデータのクラス
+    var response = new IndexViewModel(text.Title, text.Description, text.Profile_1);
+
+    // Views/Portfolio/Index.cshtmlをブラウザに返す
+    return View(response);
 }

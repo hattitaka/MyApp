@@ -1,11 +1,5 @@
-﻿using MyApp.Areas.Admin.Extentions;
+﻿using MyApp.Areas.Admin.Models;
 using MyApp.Areas.Admin.Repository.Models;
-using MyApp.Areas.Admin.Models;
-using MyApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers

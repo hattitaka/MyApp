@@ -1,15 +1,14 @@
-﻿using MyApp.Areas.Admin;
-using MyApp.Areas.Admin.Controllers;
+﻿using MyApp.Areas.Admin.Controllers;
 using MyApp.Models.Portfolio;
-using System.Web.Mvc;
-using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using static MyApp.Models.Portfolio.GetPageListViewModel;
 
 namespace MyApp.Controllers
 {
     public class PortfolioController : BaseController
     {
+        [HttpGet]
         public ActionResult GetPageList()
         {
             var userList = userData.GetUserList().UserList

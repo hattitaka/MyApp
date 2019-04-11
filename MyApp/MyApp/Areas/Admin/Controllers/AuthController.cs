@@ -26,6 +26,7 @@ namespace MyApp.Areas.Admin.Controllers
                 return RedirectToAction("Login", "Auth");
             }
 
+            // 存在していればセッションにユーザーIDを保存
             Session["userid"] = response.Id;
 
             return RedirectToAction("Edit", "Admin");
