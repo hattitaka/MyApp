@@ -1,0 +1,25 @@
+﻿@model MyApp.Models.Portfolio.GetPageListViewModel
+@{
+    ViewBag.Title = "GetPageList";
+}
+
+<header class="main-visual">
+    <h1 class="main-visual-title">Portfolioサイトへようこそ</h1>
+    <p class="main-visual-description">自己紹介サイトです</p>
+</header>
+
+
+<section class="contents">
+    <ul>
+        @foreach (var user in Model.UserList)
+        {
+            <li class="hobby-list">@Html.ActionLink(user.Name, "Index", "Portfolio", new { area = "", userId = user.Id }, null) さん</li>
+        }
+    </ul>
+    @Html.ActionLink("管理者画面", "Login", "Auth", new { area = "Admin" }, null)
+</section>
+<footer class="footer">
+    <p class="footer-copylight">COPYRIGHT Sample Site All Rights Reserved.</p>
+</footer>
+
+

@@ -1,0 +1,141 @@
+﻿HelloWorldしてみる
+
+/// <summary>
+/// ブラウザが「～～/Portfolio/Index」にアクセスしたときに呼び出される
+/// </summary>
+/// <returns>Views/Portfolio/Index.cshtmlをブラウザに返す</returns>
+[HttpGet]
+public ActionResult Index()
+{
+    // Views/Portfolio/Index.cshtmlをブラウザに返す処理
+	return View();
+}
+
+
+1. 取得した文言を画面に送るロジック
+[HttpGet]
+public ActionResult Index()
+{
+    var title = "タイトル";
+    var description = "サブタイトル";
+    var profile = "自己紹介";
+
+    // 画面で受け取るデータのクラス
+    var response = new IndexViewModel(title, description, profile);
+
+    // Views/Portfolio/Index.cshtmlをブラウザに返す
+    return View(response);
+}
+
+
+2.1 編集内容の保存アクションを作成する
+/// <summary>
+/// ブラウザが「～～/Admin/Edit」にアクセスしたときに呼び出される
+/// </summary>
+/// <param name="request">EditPageViewModel</param>
+/// <returns></returns>
+[HttpPost]
+public ActionResult Edit(EditPageViewModel request)
+{
+    // どこで作られるかは秘密
+    var id = userId;
+
+    // 画面からきたリクエストたちをtitle, description, profile_1に
+    var title = request.Title;
+    var description = request.Description;
+    var profile_1 = request.Profile_1;
+
+    // 保存メソッドに渡すためのリクエストクラスを作る
+    var saveData = new RegisterTextRequest(id, title, description, profile_1);
+
+    // saveDataを保存メソッドに渡す
+    textData.SaveText(saveData);
+
+    // プレビューアクションを呼び出す
+    return View();
+}
+
+2.2 保存アクションに値を送るしくみ作成
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    <div class="form-group col-md-11 col-md-offset-1">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(
+            m => m.Title,
+            new { @class="form-control"})
+    </div>
+    <div class="form-group col-md-11 col-md-offset-1">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(
+            m => m.Description,
+            new { @class="form-control", @style = "height:100px;" })
+    </div>
+    <div class="form-group col-md-11 col-md-offset-1">
+        @Html.LabelFor(m => m.Profile_1)
+        @Html.TextBoxFor(
+            m => m.Profile_1,
+            new { @class="form-control", @style = "height:100px;" })
+    </div>
+    <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
+}
+
+4.1 Userテーブル
+CREATE TABLE [dbo].[User] (
+    [Id]          NCHAR (32)  NOT NULL,
+    [LoginId]     NCHAR (50)  NOT NULL,
+    [Name]        NCHAR (50)  NOT NULL,
+    [MailAddress] NCHAR (256) NOT NULL,
+    [Password] NCHAR(128) NOT NULL, 
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+4.2 Textテーブル
+CREATE TABLE [dbo].[Text] (
+    [Id]          NCHAR (32)  NOT NULL,
+    [UserId]      NCHAR (32)  NOT NULL,
+    [Title]       NCHAR (50)  NOT NULL,
+    [Description] NCHAR (200) NOT NULL,
+    [Profile_1]   NCHAR (200) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+4.DB接続情報
+データソース：Microsoft SQL Sever (SqlClient)
+サーバー名：(localdb)\ProjectsV13
+
+5.2 DBからデータを取得する処理
+public GetTextResponse GetText(string userId)
+{
+    // 渡されたuerIdをもとにTextテーブル内を検索する
+    var res = db.Text.FirstOrDefault(x => x.UserId == userId);
+
+    // 検索結果がNullなら空レスポンス
+    if (res == null)
+    {
+        return new GetTextResponse();
+    }
+
+    // 検索結果が存在すれば取得したデータを返す
+    return new GetTextResponse(res.Title, res.Description, res.Profile_1);
+}
+
+5.3 GetTextメソッドを用いたIndexアクション
+// GET: Portfolio
+[HttpGet]
+public ActionResult Index(string userId)
+{
+    // useridの空白とNullのチェック
+    if (string.IsNullOrEmpty(userId))
+    {
+        return RedirectToAction("GetPageList");
+    }
+
+    // DBからデータを取得
+    var text = textData.GetText(userId);
+
+    // 画面で受け取るデータのクラス
+    var response = new IndexViewModel(text.Title, text.Description, text.Profile_1);
+
+    // Views/Portfolio/Index.cshtmlをブラウザに返す
+    return View(response);
+}

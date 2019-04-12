@@ -1,0 +1,34 @@
+﻿@model MyApp.Areas.Admin.Models.UserSettingPageViewModel
+
+@{
+    ViewBag.Title = "Setting";
+}
+
+<h2>Setting</h2>
+<div class="row">
+    @using (Html.BeginForm("SaveChange", "User", FormMethod.Post))
+    {
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputTitle">LoginId</label>
+            @Html.TextBox(
+                "LoginId",
+                Model.LoginId,
+                new { @class="form-control", @id= "inputLoginId" })
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputDescription">Name</label>
+            @Html.TextBox(
+                "Name",
+                Model.Name,
+                new { @class="form-control", @id= "inputName" })
+        </div>
+        <div class="form-group col-md-11 col-md-offset-1">
+            <label for="inputProfile_1">MailAddress</label>
+            @Html.TextBox(
+                "Address",
+                Model.MailAddress,
+                new { @class="form-control", @id= "inputMailAddress" })
+        </div>
+        <button type="submit" class="btn btn-primary col-md-offset-1">Submit</button>
+    }
+</div>

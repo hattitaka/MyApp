@@ -23,7 +23,8 @@ namespace MyApp
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/css/style.css"));
+                      "~/Content/css/bootstrap.css",
+                      "~/Content/css/site.css"));
         }
     }
 }

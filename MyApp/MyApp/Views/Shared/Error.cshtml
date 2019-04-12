@@ -1,14 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>エラー</title>
-</head>
-<body>
-    <hgroup>
-        <h1>エラー。</h1>
-        <h2>要求の処理中にエラーが発生しました。</h2>
-    </hgroup>
-</body>
-</html>
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{ 
+    ViewBag.Title = "Error";
+    Layout = "~/Areas/Admin/Views/Shared/_SideMenuLayout.cshtml";
+}
+
+<div class="row">
+    <div class="jumbotron alert-danger">
+        <h2>Error</h2>
+        <p>@Model.Exception.Message</p>
+    </div>
+</div>
