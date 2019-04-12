@@ -3,24 +3,10 @@
 <div class="row">
     @using (Html.BeginForm("Edit", "Home", FormMethod.Post))
     {
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(
-                m => m.Title,
-                new { @class="form-control"})
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(m => m.Description)
-            @Html.TextBoxFor(
-                m => m.Description,
-                new { @class="form-control", @style = "height:100px;" })
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(m => m.Profile_1)
-            @Html.TextBoxFor(
-                m => m.Profile_1,
-                new { @class="form-control", @style = "height:100px;" })
-        </div>
+        // 「3.2 保存アクションに値を送るフォーム作成.txt」の中身をこの間にコピー
+        @* --------------------- *@
+        
+        @* --------------------- *@
         <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
     }
 </div>

@@ -9,12 +9,12 @@ namespace MyApp.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         // テスト用
-        //public InMemoryUserRepositories userData { get; }
-        //public InMemoryPortfolioWordRepositories textData { get; }
+        public InMemoryUserRepositories userData { get; }
+        public InMemoryPortfolioWordRepositories textData { get; }
 
         // DB接続用
-        public UserRepository userData { get; }
-        public TextRepository textData { get; }
+        //public UserRepository userData { get; }
+        //public TextRepository textData { get; }
 
         public string userName { get; set; }
 
@@ -23,12 +23,12 @@ namespace MyApp.Areas.Admin.Controllers
         public BaseController()
         {
             // テスト用
-            //userData = new InMemoryUserRepositories();
-            //textData = new InMemoryPortfolioWordRepositories();
+            userData = new InMemoryUserRepositories();
+            textData = new InMemoryPortfolioWordRepositories();
 
             // DB接続用
-            userData = new UserRepository();
-            textData = new TextRepository();
+            //userData = new UserRepository();
+            //textData = new TextRepository();
         }
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)

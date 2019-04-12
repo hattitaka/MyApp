@@ -1,0 +1,9 @@
+﻿var title = "たいとる";
+var description = "さぶたいとる";
+var profile_1 = "自己紹介";
+
+// 画面で受け取るデータのクラス
+var response = new IndexViewModel(title, description, profile_1);
+
+// Views/Portfolio/Index.cshtmlをブラウザに返す + データも渡す
+return View(response);

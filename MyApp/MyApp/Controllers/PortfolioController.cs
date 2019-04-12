@@ -22,24 +22,9 @@ namespace MyApp.Controllers
             return View(response);
         }
 
-        // GET: Portfolio
-        [HttpGet]
-        public ActionResult Index(string userId)
-        {
-            // useridの空白とNullのチェック
-            if (string.IsNullOrEmpty(userId))
-            {
-                return RedirectToAction("GetPageList");
-            }
+        // 「0.0 HelloWorld的なことをしてみる.txt」の中身をこの間にコピー
+        /* --------------------- */
 
-            // DBからデータを取得
-            var text = textData.GetText(userId);
-
-            // 画面で受け取るデータのクラス
-            var response = new IndexViewModel(text.Title, text.Description, text.Profile_1);
-
-            // Views/Portfolio/Index.cshtmlをブラウザに返す
-            return View(response);
-        }
+        /* --------------------- */
     }
 }
