@@ -13,18 +13,5 @@ namespace MyApp.Areas.Admin.Repository.Models
         }
 
         public List<UserItem> UserList { get; }
-
-        public class UserItem
-        {
-            public UserItem(string id, string name)
-            {
-                Id = id;
-                Name = name;
-            }
-
-            public string Id { get; }
-
-            public string Name { get; }
-        }
     }
 }

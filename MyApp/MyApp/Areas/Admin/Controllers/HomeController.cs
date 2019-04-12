@@ -11,7 +11,12 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Edit()
         {
             var text = textData.GetText(userId);
-            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1);
+            var model = new EditPageViewModel()
+            {
+                Title = text.Title,
+                Description = text.Description,
+                Profile_1 = text.Profile_1
+            };
             return View(model);
         }
 

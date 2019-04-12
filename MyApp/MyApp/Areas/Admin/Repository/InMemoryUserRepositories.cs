@@ -5,7 +5,6 @@ using MyApp.Areas.Admin.Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static MyApp.Areas.Admin.Repository.Models.GetUserListResponse;
 
 namespace MyApp.Areas.Admin
 {
@@ -69,7 +68,7 @@ namespace MyApp.Areas.Admin
 
         public GetUserListResponse GetUserList()
         {
-            var res = testData.Select(x => new UserItem(x.Id, x.Name)).ToList();
+            var res = testData.Select(x => new UserItem() { Id = x.Id, Name = x.Name }).ToList();
             return new GetUserListResponse(res);
         }
     }

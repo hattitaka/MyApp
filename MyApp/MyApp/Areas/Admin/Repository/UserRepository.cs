@@ -1,16 +1,13 @@
 ﻿using MyApp.Areas.Admin.Common;
 using MyApp.Areas.Admin.Repository.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using static MyApp.Areas.Admin.Repository.Models.GetUserListResponse;
 
 namespace MyApp.Areas.Admin.Repository
 {
     public class UserRepository: IUserRepository
     {
-        private MyAppDbEntities db = new MyAppDbEntities();
+        private DataBaseEntities db = new DataBaseEntities();
 
         public CheckUserResponse CheckUser(CheckUserRequest req)
         {
@@ -65,7 +62,7 @@ namespace MyApp.Areas.Admin.Repository
         public GetUserListResponse GetUserList()
         {
             var res = db.User
-                .Select(x => new UserItem(x.Id, x.Name))
+                .Select(x => new UserItem() { Id = x.Id, Name = x.Name })
                 .ToList();
             return new GetUserListResponse(res);
         }

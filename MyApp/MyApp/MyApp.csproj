@@ -277,9 +277,9 @@
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\_PreviewPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Preview.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_PreviewPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Preview.cshtml" />
     <Content Include="Areas\Admin\Views\User\UserDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_SideMenuLayout.cshtml" />
     <Content Include="Areas\Admin\Views\User\Settings.cshtml" />

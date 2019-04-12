@@ -29,7 +29,7 @@ namespace MyApp.Areas.Admin.Controllers
             // 存在していればセッションにユーザーIDを保存
             Session["userid"] = response.Id;
 
-            return RedirectToAction("Edit", "Admin");
+            return RedirectToAction("Edit", "Home");
         }
 
         [HttpGet]
