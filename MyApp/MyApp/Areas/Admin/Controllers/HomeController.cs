@@ -19,32 +19,10 @@ namespace MyApp.Areas.Admin.Controllers
             };
             return View(model);
         }
-
-        /// <summary>
-        /// ブラウザが「～～/Admin/Edit」にアクセスしたときに呼び出される
-        /// </summary>
-        /// <param name="request">EditPageViewModel</param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Edit(EditPageViewModel request)
-        {
-            // どこで作られるかは秘密
-            var id = userId;
-
-            // 画面からきたリクエストたちをtitle, description, profile_1に
-            var title = request.Title;
-            var description = request.Description;
-            var profile_1 = request.Profile_1;
-
-            // 保存メソッドに渡すためのリクエストクラスを作る
-            var saveData = new RegisterTextRequest(id, title, description, profile_1);
-
-            // saveDataを保存メソッドに渡す
-            textData.SaveText(saveData);
-
-            // プレビューアクションを呼び出す
-            return View();
-        }
+        // 「3.1 編集内容の保存アクションを作成する.txt」の中身をこの間にコピー
+        /* --------------------- */
+        
+        /* --------------------- */
 
         [HttpGet]
         public ActionResult Preview()

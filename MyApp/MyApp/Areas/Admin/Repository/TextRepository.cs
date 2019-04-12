@@ -17,20 +17,9 @@ namespace MyApp.Areas.Admin.Repository
             db.SaveChanges();
         }
 
-        public GetTextResponse GetText(string userId)
-        {
-            // 渡されたuerIdをもとにTextテーブル内を検索する
-            var res = db.Text.FirstOrDefault(x => x.UserId == userId);
+        // 「3.1 編集内容の保存アクションを作成する.txt」の中身をこの間にコピー
+        /* --------------------- */
 
-            // 検索結果がNullなら空レスポンス
-            if (res == null)
-            {
-                return new GetTextResponse();
-            }
-
-            // 検索結果が存在すれば取得したデータを返す
-            return new GetTextResponse(res.Title, res.Description, res.Profile_1);
-        }
-
+        /* --------------------- */
     }
 }

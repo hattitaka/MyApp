@@ -1,4 +1,4 @@
-﻿HelloWorldしてみる
+﻿HelloWorld的なことをしてみる
 
 /// <summary>
 /// ブラウザが「～～/Portfolio/Index」にアクセスしたときに呼び出される
