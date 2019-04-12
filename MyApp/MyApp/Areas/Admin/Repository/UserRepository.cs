@@ -9,6 +9,12 @@ namespace MyApp.Areas.Admin.Repository
     {
         private DataBaseEntities db = new DataBaseEntities();
 
+        /// <summary>
+        /// 存在すればユーザー情報を
+        /// 存在しなければnullを返す
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         public CheckUserResponse CheckUser(CheckUserRequest req)
         {
             var target = db.User.FirstOrDefault(x => x.LoginId == req.LoginId && x.Password == req.Password);

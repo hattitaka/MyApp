@@ -309,6 +309,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="toranomaki\2.1 ログインIDとパスワード用Formを作る.txt" />
     <Content Include="toranomaki\Portfolio.html" />
     <Content Include="toranomaki\sample.txt" />
     <Content Include="Web.config" />

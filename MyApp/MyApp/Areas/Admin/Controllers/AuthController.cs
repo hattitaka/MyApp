@@ -23,7 +23,7 @@ namespace MyApp.Areas.Admin.Controllers
             // 存在しなければログイン画面に戻す
             if (response == null)
             {
-                return RedirectToAction("Login", "Auth");
+                return View();
             }
 
             // 存在していればセッションにユーザーIDを保存
