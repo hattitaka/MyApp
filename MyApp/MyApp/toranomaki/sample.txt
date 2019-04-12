@@ -30,12 +30,12 @@ public ActionResult Index()
 
 2.1 編集内容の保存アクションを作成する
 /// <summary>
-/// ブラウザが「～～/Admin/SaveChange」にアクセスしたときに呼び出される
+/// ブラウザが「～～/Admin/Edit」にアクセスしたときに呼び出される
 /// </summary>
-/// <param name="request">SaveChangeRequestクラスのデータを受け付けている</param>
+/// <param name="request">EditPageViewModel</param>
 /// <returns></returns>
 [HttpPost]
-public ActionResult SaveChange(SaveChangeRequest request)
+public ActionResult Edit(EditPageViewModel request)
 {
     // どこで作られるかは秘密
     var id = userId;
@@ -52,32 +52,29 @@ public ActionResult SaveChange(SaveChangeRequest request)
     textData.SaveText(saveData);
 
     // プレビューアクションを呼び出す
-    return Redirect("Preview");
+    return View();
 }
 
 2.2 保存アクションに値を送るしくみ作成
-@using (Html.BeginForm("SaveChange", "Admin", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
 {
     <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputTitle">Title</label>
-        @Html.TextBox(
-            "Title",
-            Model.Title,
-            new { @class="form-control", @id="inputTitle" })
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(
+            m => m.Title,
+            new { @class="form-control"})
     </div>
     <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputDescription">Description</label>
-        @Html.TextArea(
-            "Description",
-            Model.Description,
-            new { @class="form-control", @id= "inputDescription", @style="height:150px;"})
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(
+            m => m.Description,
+            new { @class="form-control", @style = "height:100px;" })
     </div>
     <div class="form-group col-md-11 col-md-offset-1">
-        <label for="inputProfile_1">Profile_1</label>
-        @Html.TextArea(
-            "Profile_1",
-            Model.Profile_1,
-            new { @class="form-control", @id= "inputProfile_1", @style="height:150px;" })
+        @Html.LabelFor(m => m.Profile_1)
+        @Html.TextBoxFor(
+            m => m.Profile_1,
+            new { @class="form-control", @style = "height:100px;" })
     </div>
     <button type="submit" class="btn btn-primary col-md-offset-4">Save</button>
 }
