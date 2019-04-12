@@ -13,17 +13,26 @@ namespace MyApp.Areas.Admin.Controllers
     [HandleError]
     public class AdminController : BaseController
     {
+        [HttpGet]
         public ActionResult Edit()
         {
             var text = textData.GetText(userId);
-            var model = new EditPageViewModel(text.Title, text.Description, text.Profile_1);
+            var model = new EditPageViewModel()
+            {
+                Title = text.Title,
+                Description = text.Description,
+                Profile_1 = text.Profile_1
+            };
             return View(model);
         }
 
-        public ActionResult SaveChange(SaveChangeRequest request)
+        [HttpPost]
+        public ActionResult Edit(EditPageViewModel model)
         {
-            textData.SaveText(new RegisterTextRequest(userId, request.Title, request.Description, request.Profile_1));
-            return Redirect("Preview");
+            textData.SaveText(new RegisterTextRequest(userId, model.Title, model.Description, model.Profile_1));
+            model.ExecuteResultMessage = "変更しました";
+
+            return View(model);
         }
 
         [HttpGet]

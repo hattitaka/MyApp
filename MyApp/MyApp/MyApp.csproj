@@ -160,7 +160,6 @@
     <Compile Include="Areas\Admin\Models\LoginRequestModel.cs" />
     <Compile Include="Areas\Admin\Models\PreviewPageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PreviewPartialViewModel.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\SaveTextChangeRequest.cs" />
     <Compile Include="Areas\Admin\Models\EditPageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Areas\Admin\Models\UserDetails.cs" />
@@ -209,7 +208,6 @@
     <Content Include="Content\img\main-visual-back.png" />
     <Content Include="Content\img\profile.gif" />
     <Content Include="Content\css\Site.css" />
-    <Content Include="DB\MyAppDB.mdf" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -287,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DB\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
