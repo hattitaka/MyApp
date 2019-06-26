@@ -1,5 +1,5 @@
 ﻿using MyApp.Areas.Admin.Models;
-using MyApp.Areas.Admin.Repository.Models;
+using MyApp.Areas.Admin.Models.UserCase.CheckUser;
 using System;
 using System.Web.Mvc;
 

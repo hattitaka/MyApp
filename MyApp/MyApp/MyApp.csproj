@@ -140,32 +140,40 @@
     <Compile Include="Areas\Admin\Common\LoginToken.cs" />
     <Compile Include="Areas\Admin\Common\TextId.cs" />
     <Compile Include="Areas\Admin\Common\UserFactory.cs" />
-    <Compile Include="Areas\Admin\Common\UserIdFactory.cs" />
+    <Compile Include="Areas\Admin\Common\IdFactory.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Extentions\HttpCookieValueProvider.cs" />
-    <Compile Include="Areas\Admin\Models\SaveUserChangeRequestModel.cs" />
-    <Compile Include="Areas\Admin\Repository\InMemoryPortfolioWordRepositories.cs" />
-    <Compile Include="Areas\Admin\Repository\InMemoryUserRepositories.cs" />
-    <Compile Include="Areas\Admin\Repository\IUserRepository.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\CheckUserResponse.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\CheckUserRequest.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\GetTextResponse.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\GetUserDetailsResponse.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\GetUserIdList.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\RegisterUserRequest.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\RegisterTextRequest.cs" />
+    <Compile Include="Areas\Admin\Models\Contexts\BasicInitializer.cs" />
+    <Compile Include="Areas\Admin\Models\Models\Content.cs" />
+    <Compile Include="Areas\Admin\Models\Models\User.cs" />
+    <Compile Include="Areas\Admin\Models\Models\UserSummary.cs" />
+    <Compile Include="Areas\Admin\Models\Repository\ContentRepository.cs" />
+    <Compile Include="Areas\Admin\Models\Repository\UserRepository.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\ChangeContent\ChangeContentRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\ChangeContent\ChangeContentResponse.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\CheckUser\CheckUserRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\CheckUser\CheckUserResponse.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\GetContent\GetContentRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\GetUserSummaries\GetUserSummariesResponse.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModel\User\ChangeUserInfoViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Contexts\BasicContext.cs" />
+    <Compile Include="Areas\Admin\Models\Service\UserIdGenerator.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\ChangeUserInfo\ChangeUserInfoRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\ChangeUserInfo\ChangeUserInfoResponse.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\GetUserDetails\GetUserDetailsRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\GetUserDetails\GetUserDetailsResponse.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\ResponseBase.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\GetContent\GetContentResponse.cs" />
     <Compile Include="Areas\Admin\Models\LoginRequestModel.cs" />
     <Compile Include="Areas\Admin\Models\PreviewPageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PreviewPartialViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditPageViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Areas\Admin\Models\UserDetails.cs" />
     <Compile Include="Areas\Admin\Models\UserDetailsPageViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\UserSettingPageViewModel.cs" />
-    <Compile Include="Areas\Admin\Repository\Models\SaveUserChangeRequest.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModel\User\SettingPageViewModel.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -285,7 +293,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DB\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

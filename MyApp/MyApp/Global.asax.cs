@@ -1,8 +1,6 @@
 ﻿using MyApp.Areas.Admin.Extentions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using MyApp.Areas.Admin.Models.Contexts;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,6 +16,7 @@ namespace MyApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ValueProviderFactories.Factories.Add(new HttpCookieValueProviderFactory());
+            // Database.SetInitializer<BasicContext>(new BasicInitializer());
         }
     }
 }

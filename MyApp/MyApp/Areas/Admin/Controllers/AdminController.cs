@@ -1,11 +1,6 @@
-﻿using MyApp.Areas.Admin.Extentions;
-using MyApp.Areas.Admin.Repository.Models;
-using MyApp.Areas.Admin.Models;
-using MyApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MyApp.Areas.Admin.Models;
+using MyApp.Areas.Admin.Models.UserCase.ChangeContent;
+using MyApp.Areas.Admin.Models.UserCase.GetContent;
 using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
@@ -16,12 +11,12 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            var text = textData.GetText(userId);
+            var text = contentData.GetContent(new GetContentRequest(userId));
             var model = new EditPageViewModel()
             {
                 Title = text.Title,
                 Description = text.Description,
-                Profile_1 = text.Profile_1
+                Profiles = text.Profiles,
             };
             return View(model);
         }
@@ -29,9 +24,16 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(EditPageViewModel model)
         {
-            textData.SaveText(new RegisterTextRequest(userId, model.Title, model.Description, model.Profile_1));
-            model.ExecuteResultMessage = "変更しました";
+            var request = new ChangeContentRequest(userId, model.Title, model.Description, model.Profiles);
+            var result = contentData.ChengeContent(request);
 
+            if (result.HasError)
+            {
+                model.ExecuteResultMessage = result.ErrorMessage;
+                return View(model);
+            }
+
+            model.ExecuteResultMessage = "変更しました";
             return View(model);
         }
 
@@ -44,9 +46,10 @@ namespace MyApp.Areas.Admin.Controllers
         [ChildActionOnly]
         public PartialViewResult GetPreviewPage()
         {
-            var text = textData.GetText(userId);
+            var request = new GetContentRequest(userId);
+            var response = contentData.GetContent(request);
 
-            return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(text.Title, text.Description, text.Profile_1));
+            return PartialView("_PreviewPartial" ,new PreviewPartialViewModel(response.Title, response.Description, response.Profiles));
         }
     }
 }

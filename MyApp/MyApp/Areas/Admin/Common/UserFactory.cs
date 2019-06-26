@@ -1,4 +1,5 @@
 ﻿using MyApp.Areas.Admin.Models;
+using MyApp.Areas.Admin.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,18 @@ namespace MyApp.Areas.Admin.Common
 {
     public static class UserFactory
     {
-        public static UserDetails Create(string loginId, string name, string mailAddress, string password)
+        public static User Create(string loginId, string name, string mailAddress, string password)
         {
-            string userId = UserIdFactory.GetUserId();
+            var userId = IdFactory.Generate();
 
-            return new UserDetails(userId, loginId, name, mailAddress, password);
+            return new User()
+            {
+                Id = userId,
+                Name = name,
+                LoginId = loginId,
+                MailAddress = mailAddress,
+                Password = password,
+            };
         }
     }
 }

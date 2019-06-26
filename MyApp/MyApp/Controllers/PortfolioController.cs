@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using static MyApp.Models.Portfolio.GetPageListViewModel;
+using MyApp.Areas.Admin.Models.UserCase.GetContent;
+using MyApp.Areas.Admin.Models.Models;
 
 namespace MyApp.Controllers
 {
@@ -19,14 +21,16 @@ namespace MyApp.Controllers
                 return RedirectToAction("GetPageList");
             }
 
-            var text = textData.GetText(userId);
+            var request = new GetContentRequest(userId);
+            var response = contentData.GetContent(request);
 
-            return View(new IndexViewModel(text.Title, text.Description, text.Profile_1));
+            return View(new IndexViewModel(response.Title, response.Description, response.Profiles));
         }
 
+        [HttpGet]
         public ActionResult GetPageList()
         {
-            var userList = userData.GetUserList().UserList
+            var userList = userData.GetUserSummaries().Summaries
                 .Select(x => new DisplayUserItem(x.Id, x.Name))
                 .ToList();
 

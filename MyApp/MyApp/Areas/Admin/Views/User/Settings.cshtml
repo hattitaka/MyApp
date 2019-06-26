@@ -1,4 +1,4 @@
-﻿@model MyApp.Areas.Admin.Models.UserSettingPageViewModel
+﻿@model MyApp.Areas.Admin.Models.ViewModel.User.SettingPageViewModel
 
 @{
     ViewBag.Title = "Setting";
@@ -6,28 +6,25 @@
 
 <h2>Setting</h2>
 <div class="row">
-    @using (Html.BeginForm("SaveChange", "User", FormMethod.Post))
+    @using (Html.BeginForm("Settings", "User", FormMethod.Post))
     {
         <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputTitle">LoginId</label>
-            @Html.TextBox(
-                "LoginId",
-                Model.LoginId,
-                new { @class="form-control", @id= "inputLoginId" })
+            @Html.LabelFor(model => model.Password)
+            @Html.TextBoxFor(
+                model => model.Password,
+                new { @class = "form-control", @id = "inputLoginId" })
         </div>
         <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputDescription">Name</label>
-            @Html.TextBox(
-                "Name",
-                Model.Name,
-                new { @class="form-control", @id= "inputName" })
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(
+                model => model.Name,
+                new { @class = "form-control", @id = "inputName" })
         </div>
         <div class="form-group col-md-11 col-md-offset-1">
-            <label for="inputProfile_1">MailAddress</label>
-            @Html.TextBox(
-                "Address",
-                Model.MailAddress,
-                new { @class="form-control", @id= "inputMailAddress" })
+            @Html.LabelFor(model => model.MailAddress)
+            @Html.TextBoxFor(
+                model => model.MailAddress,
+                new { @class = "form-control", @id = "inputMailAddress" })
         </div>
         <button type="submit" class="btn btn-primary col-md-offset-1">Submit</button>
     }

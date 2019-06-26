@@ -1,9 +1,6 @@
-﻿using MyApp.Areas.Admin;
-using MyApp.Areas.Admin.Repository;
+﻿using MyApp.Areas.Admin.Models.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -12,9 +9,13 @@ namespace MyApp.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         // テスト用
-        public InMemoryUserRepositories userData { get; }
+        // public InMemoryUserRepositories userData { get; }
 
-        public InMemoryPortfolioWordRepositories textData { get; }
+        // public InMemoryPortfolioWordRepositories textData { get; }
+
+        public UserRepository userData;
+
+        public ContentRepository contentData;
 
         // DB接続用
         //public UserRepository userData { get; }
@@ -28,8 +29,8 @@ namespace MyApp.Areas.Admin.Controllers
         public BaseController()
         {
             // テスト用
-            userData = new InMemoryUserRepositories();
-            textData = new InMemoryPortfolioWordRepositories();
+            userData = new UserRepository();
+            contentData = new ContentRepository();
 
             // DB接続用
             //userData = new UserRepository();

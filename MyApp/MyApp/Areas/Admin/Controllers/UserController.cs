@@ -1,32 +1,42 @@
 ﻿using MyApp.Areas.Admin.Models;
-using MyApp.Areas.Admin.Repository.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
+using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
+using MyApp.Areas.Admin.Models.ViewModel.User;
 using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
+        [HttpGet]
         public ActionResult UserDetails()
         {
-            var response = userData.GetUserDetails(userId);
-            return View("UserDetails", new UserDetailsPageViewModel(response.LoginId, response.Name, response.Address));
+            var request = new GetUserDetailsRequest(userId);
+            var response = userData.GetUserDetails(request);
+            return View("UserDetails", new UserDetailsPageViewModel(response.LoginId, response.Name, response.MailAddress));
         }
 
+        [HttpGet]
         public ActionResult Settings()
         {
-            var response = userData.GetUserDetails(userId);
-            return View(new UserSettingPageViewModel(response.LoginId, response.Name, response.Address));
+            var request = new GetUserDetailsRequest(userId);
+            var response = userData.GetUserDetails(request);
+
+            var viewModel = new SettingPageViewModel()
+            {
+                Password = response.Password,
+                Name = response.Name,
+                MailAddress = response.MailAddress
+            };
+
+            return View(viewModel);
         }
 
-        public ActionResult SaveChange(SaveUserChangeRequestModel request)
+        [HttpPost]
+        public ActionResult Settings(SettingPageViewModel viewModel)
         {
-            var req = new SaveUserChangeRequest(userId, request.LoginId, request.Name, request.Address);
-
-            userData.SaveChange(req);
+            var request = new ChangeUserInfoRequest(userId, viewModel.Name, viewModel.MailAddress, viewModel.Password);
+            var response = userData.ChangeUserInfo(request);
 
             return RedirectToAction("UserDetails");
         }

@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MyApp.Models.Portfolio
+﻿namespace MyApp.Models.Portfolio
 {
     public class IndexViewModel
     {
-        public IndexViewModel(string title, string description, string profile_1)
+        public IndexViewModel(string title, string description, string profiles)
         {
             Title = title;
             Description = description;
-            Profile_1 = profile_1;
+            Profiles = profiles;
         }
 
         public string Title { get; }
 
         public string Description { get; }
 
-        public string Profile_1 { get; }
+        public string Profiles { get; }
     }
 }

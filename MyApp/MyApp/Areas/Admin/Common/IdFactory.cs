@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyApp.Areas.Admin.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -7,11 +8,11 @@ using System.Web;
 
 namespace MyApp.Areas.Admin.Common
 {
-    public static class UserIdFactory
+    public static class IdFactory
     {
         private static int TOKEN_LENGTH = 16;
 
-        public static string GetUserId()
+        public static string Generate()
         {
             byte[] token = new byte[TOKEN_LENGTH];
 

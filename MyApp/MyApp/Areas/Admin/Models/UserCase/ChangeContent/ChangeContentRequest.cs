@@ -1,18 +1,22 @@
-﻿using System;
+﻿using MyApp.Areas.Admin.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyApp.Areas.Admin.Models
+namespace MyApp.Areas.Admin.Models.UserCase.ChangeContent
 {
-    public class PreviewPartialViewModel
+    public class ChangeContentRequest
     {
-        public PreviewPartialViewModel(string title, string description, string profiles)
+        public ChangeContentRequest(string userId, string title, string description, string profiles)
         {
+            UserId = userId;
             Title = title;
             Description = description;
             Profiles = profiles;
         }
+
+        public string UserId { get; }
 
         public string Title { get; }
 
