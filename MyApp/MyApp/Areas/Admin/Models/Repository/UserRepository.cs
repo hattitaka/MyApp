@@ -5,10 +5,11 @@ using MyApp.Areas.Admin.Models.UserCase.CheckUser;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.UserCase.GetUserSummaries;
 using System.Linq;
+using System.Web.Configuration;
 
 namespace MyApp.Areas.Admin.Models.Repository
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         private BasicContext db = new BasicContext();
 

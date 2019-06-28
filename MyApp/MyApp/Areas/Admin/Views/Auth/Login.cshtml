@@ -8,8 +8,15 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
         <h2>LoginPage</h2>
+        @* 追加ハンズオン用 *@
+        @Html.ActionLink("CreateAccount", "Login", "Auth", new { area = "Admin" }, null)
+
+
+        @* フォーム外枠 *@
         @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
         {
+            //　「2.1 ログインIDとパスワード用のFormを作る.txt」をこの間にコピー
+            @* ------------------------------------- *@
             <div class="form-group col-md-11 col-md-offset-1">
                 @Html.LabelFor(model => model.LoginId)
                 @Html.TextBoxFor(
@@ -23,6 +30,7 @@
                     new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-primary col-md-offset-1">Login</button>
+            @* ------------------------------------- *@
         }
     </div>
     <div class="col-lg-3"></div>

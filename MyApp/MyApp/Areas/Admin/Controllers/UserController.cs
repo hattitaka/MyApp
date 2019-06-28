@@ -1,4 +1,5 @@
 ﻿using MyApp.Areas.Admin.Models;
+using MyApp.Areas.Admin.Models.Repository;
 using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.ViewModel.User;
@@ -8,11 +9,21 @@ namespace MyApp.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
+        private IContentRepository contentRepository;
+
+        private IUserRepository userRepository;
+
+        public UserController(IUserRepository userRepository, IContentRepository contentRepository)
+        {
+            this.userRepository = userRepository;
+            this.contentRepository = contentRepository;
+        }
+
         [HttpGet]
         public ActionResult UserDetails()
         {
             var request = new GetUserDetailsRequest(userId);
-            var response = userData.GetUserDetails(request);
+            var response = userRepository.GetUserDetails(request);
             return View("UserDetails", new UserDetailsPageViewModel(response.LoginId, response.Name, response.MailAddress));
         }
 
@@ -20,7 +31,7 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Settings()
         {
             var request = new GetUserDetailsRequest(userId);
-            var response = userData.GetUserDetails(request);
+            var response = userRepository.GetUserDetails(request);
 
             var viewModel = new SettingPageViewModel()
             {
@@ -36,7 +47,7 @@ namespace MyApp.Areas.Admin.Controllers
         public ActionResult Settings(SettingPageViewModel viewModel)
         {
             var request = new ChangeUserInfoRequest(userId, viewModel.Name, viewModel.MailAddress, viewModel.Password);
-            var response = userData.ChangeUserInfo(request);
+            var response = userRepository.ChangeUserInfo(request);
 
             return RedirectToAction("UserDetails");
         }

@@ -7,11 +7,22 @@ using System.Linq;
 using static MyApp.Models.Portfolio.GetPageListViewModel;
 using MyApp.Areas.Admin.Models.UserCase.GetContent;
 using MyApp.Areas.Admin.Models.Models;
+using MyApp.Areas.Admin.Models.Repository;
 
 namespace MyApp.Controllers
 {
     public class PortfolioController : BaseController
     {
+        private IContentRepository contentRepository;
+
+        private IUserRepository userRepository;
+
+        public PortfolioController(IUserRepository userRepository, IContentRepository contentRepository)
+        {
+            this.userRepository = userRepository;
+            this.contentRepository = contentRepository;
+        }
+
         // GET: Portfolio
         [HttpGet]
         public ActionResult Index(string userId)
@@ -22,7 +33,7 @@ namespace MyApp.Controllers
             }
 
             var request = new GetContentRequest(userId);
-            var response = contentData.GetContent(request);
+            var response = contentRepository.GetContent(request);
 
             return View(new IndexViewModel(response.Title, response.Description, response.Profiles));
         }
@@ -30,7 +41,7 @@ namespace MyApp.Controllers
         [HttpGet]
         public ActionResult GetPageList()
         {
-            var userList = userData.GetUserSummaries().Summaries
+            var userList = userRepository.GetUserSummaries().Summaries
                 .Select(x => new DisplayUserItem(x.Id, x.Name))
                 .ToList();
 

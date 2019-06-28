@@ -9,7 +9,7 @@ using System.Web;
 
 namespace MyApp.Areas.Admin.Models.Repository
 {
-    public class ContentRepository
+    public class ContentRepository: IContentRepository
     {
         private BasicContext db = new BasicContext();
 

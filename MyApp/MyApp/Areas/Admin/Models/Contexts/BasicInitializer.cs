@@ -1,12 +1,13 @@
 ﻿using MyApp.Areas.Admin.Common;
 using MyApp.Areas.Admin.Models.Models;
-using MyApp.Areas.Admin.Models.Service;
 using System.Data.Entity;
 
 namespace MyApp.Areas.Admin.Models.Contexts
 {
-    public class BasicInitializer: DropCreateDatabaseAlways<BasicContext>
+    public class BasicInitializer : DropCreateDatabaseAlways<BasicContext>
     {
+        // 「4.3 イニシャライザー作成.txt」
+        /* --------------------------------------------- */
         protected override void Seed(BasicContext context)
         {
             var testAccount = UserFactory.Create(
@@ -23,11 +24,12 @@ namespace MyApp.Areas.Admin.Models.Contexts
                 UserId = testAccount.Id,
                 Title = "TEST TITLE",
                 Decription = "TEST DESCRIPTION",
-                Plofiles = "PROFILE_1",
+                Plofiles = "PROFILE",
             };
             context.Contents.Add(testContent);
 
             context.SaveChanges();
         }
+        /* --------------------------------------------- */
     }
 }
