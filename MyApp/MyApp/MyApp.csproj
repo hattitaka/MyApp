@@ -277,6 +277,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Toranomaki\3.2 保存アクションに値を送るフォーム作成.txt" />
+    <Content Include="Toranomaki\HelloWorld的なことをしてみる.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -299,6 +301,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Portfolio\GetPageList.cshtml" />
+    <Content Include="Toranomaki\Portfolio.cshtml" />
+    <Content Include="Toranomaki\1.1 指定した文言をクライアントに送るロジック作成" />
+    <Content Include="Toranomaki\2.1 ログインIDとパスワード用のFormを作る" />
+    <Content Include="Toranomaki\3.1 編集内容の保存アクションを作成する" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

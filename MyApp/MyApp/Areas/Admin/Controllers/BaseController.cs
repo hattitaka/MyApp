@@ -21,12 +21,19 @@ namespace MyApp.Areas.Admin.Controllers
             return base.BeginExecute(requestContext, callback, state);
         }
 
+        /// <summary>
+        /// 各アクションが実行される直前にここの処理が走ります
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            // ログインの必要がないページのパス
             string[] NO_CHECK_PATH = { "/", "/Admin/Auth/Login", "/Portfolio/GetPageList" };
 
+            // 現在のパスがNO_CHECK_PATHに含まれているならreturn
             if (NO_CHECK_PATH.Contains(filterContext.HttpContext.Request.Path)) { return; }
 
+            // セッションにユーザーIDが入っていない(ログインを行っていない)ならトップページに飛ばす
             if (Session["userid"] == null)
             {
                 // セッション値を初期化

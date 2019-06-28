@@ -11,7 +11,7 @@ namespace MyApp.Areas.Admin.Models.Repository
 {
     public class InMemoryUserRepository : IUserRepository
     {
-        private List<User> data = new List<User>()
+        private static List<User> data = new List<User>()
         {
             new User()
             {

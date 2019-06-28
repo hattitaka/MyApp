@@ -14,6 +14,8 @@ namespace MyApp.Areas.Admin.Models.UserCase.GetContent
         public GetContentResponse(string errorMessage)
             : base(errorMessage) { }
 
+        public GetContentResponse() { }
+
         public string Title { get; }
 
         public string Description { get; }

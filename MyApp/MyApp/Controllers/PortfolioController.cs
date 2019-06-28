@@ -1,13 +1,9 @@
-﻿using MyApp.Areas.Admin;
-using MyApp.Areas.Admin.Controllers;
-using MyApp.Models.Portfolio;
-using System.Web.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using static MyApp.Models.Portfolio.GetPageListViewModel;
-using MyApp.Areas.Admin.Models.UserCase.GetContent;
-using MyApp.Areas.Admin.Models.Models;
+﻿using MyApp.Areas.Admin.Controllers;
 using MyApp.Areas.Admin.Models.Repository;
+using MyApp.Areas.Admin.Models.UserCase.GetContent;
+using MyApp.Models.Portfolio;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MyApp.Controllers
 {
@@ -23,7 +19,10 @@ namespace MyApp.Controllers
             this.contentRepository = contentRepository;
         }
 
-        // GET: Portfolio
+        /// <summary>
+        /// ブラウザが「～/Portfolio/Index」にアクセスしたときに呼び出される
+        /// </summary>
+        /// <returns>/Views/Portfolio/Index.cshtmlをブラウザに返す</returns>
         [HttpGet]
         public ActionResult Index(string userId)
         {
@@ -42,13 +41,14 @@ namespace MyApp.Controllers
         public ActionResult GetPageList()
         {
             var userList = userRepository.GetUserSummaries().Summaries
-                .Select(x => new DisplayUserItem(x.Id, x.Name))
+                .Select(x => new GetPageListViewModel.DisplayUserItem(x.Id, x.Name))
                 .ToList();
 
             var response = new GetPageListViewModel()
             {
                 UserList = userList
             };
+            
             return View(response);
         }
     }

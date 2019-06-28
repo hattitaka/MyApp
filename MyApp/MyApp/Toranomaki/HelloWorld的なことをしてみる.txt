@@ -1,0 +1,10 @@
+﻿/// <summary>
+/// ブラウザが「～/Portfolio/Index」にアクセスしたときに呼び出される
+/// </summary>
+/// <returns>/Views/Portfolio/Index.cshtmlをブラウザに返す</returns>
+[HttpGet]
+public ActionResult Index()
+{
+    // /Views/Portfolio/Index.cshtmlをブラウザに返す処理
+    return View();
+}

@@ -15,14 +15,24 @@ namespace MyApp.Areas.Admin.Models.Repository
 
         public GetContentResponse GetContent(GetContentRequest req)
         {
+            // 「5.2 DBからデータを取得する処理.txt」
+            /* ---------------------------------------------------------------------------- */
+
+            /* ---------------------------------------------------------------------------- */
+            // 渡されたIDをもとにContentsテーブル内を検索する
             var target = db.Contents.FirstOrDefault(x => x.UserId == req.UserId);
 
-            if(target == null)
+            // 検索結果がnullならエラーメッセージとともに返す
+            if (target == null)
             {
                 return new GetContentResponse("Invalid request");
             }
 
+            // 検索結果が存在すればそのままレスポンスとして返す
             return new GetContentResponse(target);
+
+            // ↓消しちゃう
+            // return new GetContentResponse();
         }
 
         public ChangeContentResponse ChengeContent(ChangeContentRequest req)

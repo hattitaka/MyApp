@@ -32,19 +32,42 @@ namespace MyApp.Areas.Admin.Controllers
             return View(model);
         }
 
+        // 「3.1 編集内容の保存アクションを作成する.txt」
+        /* --------------------------------------------------------------------------------- */
+
+        /* --------------------------------------------------------------------------------- */
+
+        /// <summary>
+        /// ブラウザが「～/Admin/Edit」にアクセスしたときに呼び出される
+        /// </summary>
+        /// <param name="model">EditPageViewModelクラスを引数として受け付けています</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Edit(EditPageViewModel model)
         {
-            var request = new ChangeContentRequest(userId, model.Title, model.Description, model.Profiles);
+            // 画面から送られてきたクラス(EditPageViewModel model)から各値を抜き出す
+            var id = userId;
+            var title = model.Title;
+            var description = model.Description;
+            var profiles = model.Profiles;
+
+            // 保存のためのリクエストクラスを作成
+            var request = new ChangeContentRequest(id, title, description, profiles);
+
+            // 保存メソッド実行
             var result = contentRepository.ChengeContent(request);
 
+            // エラーだった時の処理
             if (result.HasError)
             {
                 model.ExecuteResultMessage = result.ErrorMessage;
                 return View(model);
             }
 
+            // 変更通知
             model.ExecuteResultMessage = "変更しました";
+
+            // 変更結果を返す
             return View(model);
         }
 

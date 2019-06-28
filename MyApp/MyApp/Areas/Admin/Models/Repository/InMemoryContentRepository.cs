@@ -8,7 +8,7 @@ namespace MyApp.Areas.Admin.Models.Repository
 {
     public class InMemoryContentRepository : IContentRepository
     {
-        private List<Content> data = new List<Content>()
+        private static List<Content> data = new List<Content>()
         {
             new Content()
             {

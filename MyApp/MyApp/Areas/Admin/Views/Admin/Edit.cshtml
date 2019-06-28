@@ -3,6 +3,11 @@
 <div class="row">
     @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
     {
+        // 「3.2 保存アクションに値を送るフォーム作成.txt」
+        /* ---------------------------------------------------------------------------------- */
+
+        /* ---------------------------------------------------------------------------------- */
+        
         <div class="form-group col-md-11 col-md-offset-1">
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })

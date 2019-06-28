@@ -22,7 +22,7 @@ namespace MyApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ValueProviderFactories.Factories.Add(new HttpCookieValueProviderFactory());
-            // Database.SetInitializer<BasicContext>(new BasicInitializer());
+            Database.SetInitializer<BasicContext>(new BasicInitializer());
 
             IKernel kernel = new StandardKernel();
             var productionMode = ConfigurationManager.AppSettings["Production"];
