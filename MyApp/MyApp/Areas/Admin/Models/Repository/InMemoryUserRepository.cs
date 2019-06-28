@@ -1,6 +1,7 @@
 ﻿using MyApp.Areas.Admin.Models.Models;
 using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
 using MyApp.Areas.Admin.Models.UserCase.CheckUser;
+using MyApp.Areas.Admin.Models.UserCase.CreateUser;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.UserCase.GetUserSummaries;
 using System;
@@ -79,6 +80,11 @@ namespace MyApp.Areas.Admin.Models.Repository
                 .ToList();
 
             return new GetUserSummariesResponse(summaries);
+        }
+
+        public CreateUserResponse CreateUser(CreateUserRequest req)
+        {
+            throw new NotImplementedException();
         }
     }
 }

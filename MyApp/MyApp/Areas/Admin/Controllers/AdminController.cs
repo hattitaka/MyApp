@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace MyApp.Areas.Admin.Controllers
 {
-    [HandleError]
     public class AdminController : BaseController
     {
         private IContentRepository contentRepository;
@@ -34,9 +33,6 @@ namespace MyApp.Areas.Admin.Controllers
 
         // 「3.1 編集内容の保存アクションを作成する.txt」
         /* --------------------------------------------------------------------------------- */
-
-        /* --------------------------------------------------------------------------------- */
-
         /// <summary>
         /// ブラウザが「～/Admin/Edit」にアクセスしたときに呼び出される
         /// </summary>
@@ -70,6 +66,7 @@ namespace MyApp.Areas.Admin.Controllers
             // 変更結果を返す
             return View(model);
         }
+        /* --------------------------------------------------------------------------------- */
 
         [HttpGet]
         public ActionResult Preview()

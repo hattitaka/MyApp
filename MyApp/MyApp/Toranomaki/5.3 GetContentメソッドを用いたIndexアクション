@@ -1,0 +1,13 @@
+﻿			// userIdチェック
+            if (string.IsNullOrEmpty(userId))
+            {
+                return RedirectToAction("GetPageList");
+            }
+
+            // GetContentのためのリクエストクラス作成
+            var request = new GetContentRequest(userId);
+
+            // GetContentを呼び出す
+            var response = contentRepository.GetContent(request);
+
+            // 取得したresponseとともに/Views/Portfolio/Index.cshtmlをブラウザに返す

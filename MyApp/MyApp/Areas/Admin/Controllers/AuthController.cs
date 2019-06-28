@@ -40,7 +40,7 @@ namespace MyApp.Areas.Admin.Controllers
 
             // セッションでUserIdを保存する
             /*---------------------------------------------*/
-            Session["userid"] = response.Id;
+
             /*---------------------------------------------*/
 
             return RedirectToAction("Edit", "Admin");

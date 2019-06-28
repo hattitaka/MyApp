@@ -28,7 +28,12 @@ namespace MyApp.Areas.Admin.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             // ログインの必要がないページのパス
-            string[] NO_CHECK_PATH = { "/", "/Admin/Auth/Login", "/Portfolio/GetPageList" };
+            string[] NO_CHECK_PATH = {
+                "/",
+                "/Admin/Auth/Login",
+                "/Portfolio/GetPageList",
+                "/Admin/User/CreateUser",
+            };
 
             // 現在のパスがNO_CHECK_PATHに含まれているならreturn
             if (NO_CHECK_PATH.Contains(filterContext.HttpContext.Request.Path)) { return; }

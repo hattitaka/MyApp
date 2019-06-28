@@ -8,24 +8,7 @@
 <div class="row">
     @using (Html.BeginForm("Settings", "User", FormMethod.Post))
     {
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(model => model.Password)
-            @Html.TextBoxFor(
-                model => model.Password,
-                new { @class = "form-control", @id = "inputLoginId" })
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(model => model.Name)
-            @Html.TextBoxFor(
-                model => model.Name,
-                new { @class = "form-control", @id = "inputName" })
-        </div>
-        <div class="form-group col-md-11 col-md-offset-1">
-            @Html.LabelFor(model => model.MailAddress)
-            @Html.TextBoxFor(
-                model => model.MailAddress,
-                new { @class = "form-control", @id = "inputMailAddress" })
-        </div>
+        // ここにformを記述
         <button type="submit" class="btn btn-primary col-md-offset-1">Submit</button>
     }
 </div>

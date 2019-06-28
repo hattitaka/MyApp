@@ -1,0 +1,24 @@
+﻿ユーザー情報変更を実装する
+
+1.Controllerの実装
+　・UserController/Settingsアクションを実装する
+　　
+　・既に同名で2つアクションが定義されているのでその中に記述
+　　ー[HttpGet]が付いている方には情報変更画面へ遷移してきたときの処理を記述
+  　　変更時に現在のユーザー情報が表示されるようにする
+　　
+　　ー[HttpPost]が付いている方にはサーバー側に変更した情報を送信してき際の処理を記述
+　　　変更後はユーザー情報詳細画面に遷移(return RedirectToAction("UserDetails"))すること
+
+　　変更のためのメソッドは
+    戻り値　　：ChangeUserInfoResponse
+	引数　　　：ChangeUserInfoRequest
+	メソッド名：ChangeUserInfo
+	でuserRepositoryに定義済み
+
+2.Viewの実装
+　・フォーム外枠は記述済み
+
+　・Submitボタンを押された際のデータの送信先を記述しなければならない
+
+　・モデルバインドのための変数名はSettingPageViewModelの中身を参照

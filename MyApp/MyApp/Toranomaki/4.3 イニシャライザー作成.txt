@@ -1,0 +1,22 @@
+﻿        protected override void Seed(BasicContext context)
+        {
+            var testAccount = UserFactory.Create(
+                "TEST",
+                "TEST",
+                "test@gmo.com",
+                "TEST"
+                );
+            context.Users.Add(testAccount);
+
+            var testContent = new Content()
+            {
+                Id = IdFactory.Generate(),
+                UserId = testAccount.Id,
+                Title = "TEST TITLE",
+                Decription = "TEST DESCRIPTION",
+                Plofiles = "PROFILE",
+            };
+            context.Contents.Add(testContent);
+
+            context.SaveChanges();
+        }

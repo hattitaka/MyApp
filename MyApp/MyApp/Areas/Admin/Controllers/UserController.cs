@@ -1,6 +1,7 @@
 ﻿using MyApp.Areas.Admin.Models;
 using MyApp.Areas.Admin.Models.Repository;
 using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
+using MyApp.Areas.Admin.Models.UserCase.CreateUser;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.ViewModel.User;
 using System.Web.Mvc;
@@ -30,26 +31,13 @@ namespace MyApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Settings()
         {
-            var request = new GetUserDetailsRequest(userId);
-            var response = userRepository.GetUserDetails(request);
-
-            var viewModel = new SettingPageViewModel()
-            {
-                Password = response.Password,
-                Name = response.Name,
-                MailAddress = response.MailAddress
-            };
-
-            return View(viewModel);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Settings(SettingPageViewModel viewModel)
         {
-            var request = new ChangeUserInfoRequest(userId, viewModel.Name, viewModel.MailAddress, viewModel.Password);
-            var response = userRepository.ChangeUserInfo(request);
-
-            return RedirectToAction("UserDetails");
+            return View();
         }
     }
 }

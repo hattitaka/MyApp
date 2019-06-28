@@ -1,0 +1,3 @@
+﻿public DbSet<User> Users { get; set; }
+
+public DbSet<Content> Contents { get; set; }

@@ -1,7 +1,9 @@
-﻿using MyApp.Areas.Admin.Models.Contexts;
+﻿using MyApp.Areas.Admin.Common;
+using MyApp.Areas.Admin.Models.Contexts;
 using MyApp.Areas.Admin.Models.Models;
 using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
 using MyApp.Areas.Admin.Models.UserCase.CheckUser;
+using MyApp.Areas.Admin.Models.UserCase.CreateUser;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.UserCase.GetUserSummaries;
 using System.Linq;
@@ -63,6 +65,20 @@ namespace MyApp.Areas.Admin.Models.Repository
                 .ToList();
 
             return new GetUserSummariesResponse(summaries);
+        }
+
+        public CreateUserResponse CreateUser(CreateUserRequest req)
+        {
+            // User
+            var user = UserFactory.Create(req.LoginId, req.Name, req.MailAddress, req.MailAddress);
+
+            // 登録処理は以下に記述する
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            return new CreateUserResponse(user.Name, user.LoginId, user.Password, user.MailAddress);
+
+            // throw new System.NotImplementedException();
         }
     }
 }

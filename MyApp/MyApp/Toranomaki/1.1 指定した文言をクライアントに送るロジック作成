@@ -1,1 +1,9 @@
-﻿
+﻿var title = "";
+var description = "";
+var profile = "";
+
+// 画面で受け取るデータのクラス
+var viewModel = new IndexViewModel(title, description, profile);
+
+// /View/Prorfolio/Index.cshtmlをブラウザに返す
+return View(viewModel);

@@ -2,10 +2,7 @@
 using MyApp.Areas.Admin.Models.Models;
 using MyApp.Areas.Admin.Models.UserCase.ChangeContent;
 using MyApp.Areas.Admin.Models.UserCase.GetContent;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MyApp.Areas.Admin.Models.Repository
 {
@@ -18,21 +15,11 @@ namespace MyApp.Areas.Admin.Models.Repository
             // 「5.2 DBからデータを取得する処理.txt」
             /* ---------------------------------------------------------------------------- */
 
+
             /* ---------------------------------------------------------------------------- */
-            // 渡されたIDをもとにContentsテーブル内を検索する
-            var target = db.Contents.FirstOrDefault(x => x.UserId == req.UserId);
-
-            // 検索結果がnullならエラーメッセージとともに返す
-            if (target == null)
-            {
-                return new GetContentResponse("Invalid request");
-            }
-
-            // 検索結果が存在すればそのままレスポンスとして返す
-            return new GetContentResponse(target);
 
             // ↓消しちゃう
-            // return new GetContentResponse();
+            throw new System.NotImplementedException();
         }
 
         public ChangeContentResponse ChengeContent(ChangeContentRequest req)

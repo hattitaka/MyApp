@@ -165,6 +165,8 @@
     <Compile Include="Areas\Admin\Models\UserCase\ChangeContent\ChangeContentResponse.cs" />
     <Compile Include="Areas\Admin\Models\UserCase\CheckUser\CheckUserRequest.cs" />
     <Compile Include="Areas\Admin\Models\UserCase\CheckUser\CheckUserResponse.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\CreateUser\CreateUserRequest.cs" />
+    <Compile Include="Areas\Admin\Models\UserCase\CreateUser\CreateUserResponse.cs" />
     <Compile Include="Areas\Admin\Models\UserCase\GetContent\GetContentRequest.cs" />
     <Compile Include="Areas\Admin\Models\UserCase\GetUserSummaries\GetUserSummariesResponse.cs" />
     <Compile Include="Areas\Admin\Models\ViewModel\User\ChangeUserInfoViewModel.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Areas\Admin\Models\EditPageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UserDetails.cs" />
     <Compile Include="Areas\Admin\Models\UserDetailsPageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModel\User\CreateUserViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModel\User\SettingPageViewModel.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -277,8 +280,12 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\こたえ.txt" />
     <Content Include="Toranomaki\3.2 保存アクションに値を送るフォーム作成.txt" />
+    <Content Include="Toranomaki\4.3 イニシャライザー作成.txt" />
+    <Content Include="Toranomaki\5.2 DBからデータを取得する処理.txt" />
     <Content Include="Toranomaki\HelloWorld的なことをしてみる.txt" />
+    <Content Include="Toranomaki\おまけ.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -290,7 +297,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Portfolio\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -305,6 +311,10 @@
     <Content Include="Toranomaki\1.1 指定した文言をクライアントに送るロジック作成" />
     <Content Include="Toranomaki\2.1 ログインIDとパスワード用のFormを作る" />
     <Content Include="Toranomaki\3.1 編集内容の保存アクションを作成する" />
+    <Content Include="Views\Portfolio\Index.cshtml" />
+    <Content Include="Toranomaki\5.3 GetContentメソッドを用いたIndexアクション" />
+    <Content Include="Toranomaki\4.2 コンテキストクラスの定義" />
+    <Content Include="Toranomaki\4.4 イニシャライザー登録.txt" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

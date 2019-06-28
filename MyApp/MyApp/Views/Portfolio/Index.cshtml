@@ -1,17 +1,12 @@
-﻿@model MyApp.Models.Portfolio.IndexViewModel
-@{
-    ViewBag.Title = "PortfolioIndex";
-}
-
-<header class="main-visual">
-    <h1 class="main-visual-title">@Model.Title</h1>
-    <p class="main-visual-description">@Model.Description</p>
+﻿<header class="main-visual">
+    <h1 class="main-visual-title">Welcome to My HP!!</h1>
+    <p class="main-visual-description">Sample Portfolio Site</p>
 </header>
 <section class="contents">
     <h2><img src="/Content/img/about-header.gif" width="134" height="55"></h2>
     <h3><img src="/Content/img/profile.gif" width="185" height="184"></h3>
     <p>
-        @Model.Profiles
+        大学を卒業後に都内のシステム開発会社に就職し、iPhone、Androidなどスマートフォン向けのネイティブアプリの開発などを担当しています。
     </p>
 </section>
 <section class="contents">
@@ -42,6 +37,10 @@
         </li>
     </ul>
 </section>
+
+@Html.ActionLink("一覧画面へ", "GetPageList", "Portfolio")
+
 <footer class="footer">
     <p class="footer-copylight">COPYRIGHT Sample Site All Rights Reserved.</p>
 </footer>
+

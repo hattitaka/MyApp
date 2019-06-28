@@ -1,12 +1,8 @@
 ﻿using MyApp.Areas.Admin.Models.UserCase.ChangeUserInfo;
 using MyApp.Areas.Admin.Models.UserCase.CheckUser;
+using MyApp.Areas.Admin.Models.UserCase.CreateUser;
 using MyApp.Areas.Admin.Models.UserCase.GetUserDetails;
 using MyApp.Areas.Admin.Models.UserCase.GetUserSummaries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyApp.Areas.Admin.Models.Repository
 {
@@ -19,5 +15,7 @@ namespace MyApp.Areas.Admin.Models.Repository
         CheckUserResponse CheckUser(CheckUserRequest req);
 
         GetUserSummariesResponse GetUserSummaries();
+
+        CreateUserResponse CreateUser(CreateUserRequest req);
     }
 }

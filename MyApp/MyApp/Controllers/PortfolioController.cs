@@ -19,23 +19,10 @@ namespace MyApp.Controllers
             this.contentRepository = contentRepository;
         }
 
-        /// <summary>
-        /// ブラウザが「～/Portfolio/Index」にアクセスしたときに呼び出される
-        /// </summary>
-        /// <returns>/Views/Portfolio/Index.cshtmlをブラウザに返す</returns>
-        [HttpGet]
-        public ActionResult Index(string userId)
-        {
-            if (string.IsNullOrEmpty(userId))
-            {
-                return RedirectToAction("GetPageList");
-            }
-
-            var request = new GetContentRequest(userId);
-            var response = contentRepository.GetContent(request);
-
-            return View(new IndexViewModel(response.Title, response.Description, response.Profiles));
-        }
+        // 「HelloWorld的なことをしてみる.txt」
+        /* --------------------------------------------------------------- */
+        
+        /* --------------------------------------------------------------- */
 
         [HttpGet]
         public ActionResult GetPageList()
