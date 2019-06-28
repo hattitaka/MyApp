@@ -24,7 +24,7 @@ namespace MyApp.Areas.Admin.Models.Repository
 
         public ChangeContentResponse ChengeContent(ChangeContentRequest req)
         {
-            var target = db.Contents.Find(new Content() { UserId = req.UserId });
+            var target = db.Contents.FirstOrDefault(x => x.UserId == req.UserId);
 
             if(target == null)
             {
