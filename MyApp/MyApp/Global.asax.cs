@@ -23,7 +23,7 @@ namespace MyApp
 
             // イニシャライザー登録
             /* ------------------------------------------ */
-            Database.SetInitializer<BasicContext>(new BasicInitializer());
+
             /* ------------------------------------------ */
 
             IKernel kernel = new StandardKernel();

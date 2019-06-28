@@ -1,4 +1,4 @@
-﻿			// userIdチェック
+﻿            // userIdチェック
             if (string.IsNullOrEmpty(userId))
             {
                 return RedirectToAction("GetPageList");
@@ -11,3 +11,4 @@
             var response = contentRepository.GetContent(request);
 
             // 取得したresponseとともに/Views/Portfolio/Index.cshtmlをブラウザに返す
+            return View(new IndexViewModel(response.Title, response.Description, response.Profiles));

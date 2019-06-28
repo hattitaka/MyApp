@@ -311,7 +311,6 @@
     <Content Include="Toranomaki\1.1 指定した文言をクライアントに送るロジック作成" />
     <Content Include="Toranomaki\2.1 ログインIDとパスワード用のFormを作る" />
     <Content Include="Toranomaki\3.1 編集内容の保存アクションを作成する" />
-    <Content Include="Views\Portfolio\Index.cshtml" />
     <Content Include="Toranomaki\5.3 GetContentメソッドを用いたIndexアクション" />
     <Content Include="Toranomaki\4.2 コンテキストクラスの定義" />
     <Content Include="Toranomaki\4.4 イニシャライザー登録.txt" />
