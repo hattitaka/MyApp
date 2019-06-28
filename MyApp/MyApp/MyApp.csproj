@@ -197,6 +197,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Basic.mdf" />
+    <Content Include="App_Data\Basic_log.ldf">
+      <DependentUpon>Basic.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
@@ -281,6 +285,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\こたえ.txt" />
+    <Content Include="Toranomaki\1.2 画面がデータを表示できるようにする.txt" />
     <Content Include="Toranomaki\3.2 保存アクションに値を送るフォーム作成.txt" />
     <Content Include="Toranomaki\4.3 イニシャライザー作成.txt" />
     <Content Include="Toranomaki\5.2 DBからデータを取得する処理.txt" />
@@ -318,9 +323,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>

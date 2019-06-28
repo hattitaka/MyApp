@@ -1,0 +1,1 @@
+﻿@model MyApp.Models.Portfolio.IndexViewModel
